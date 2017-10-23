@@ -1,2 +1,2 @@
 # VS2Labor
-Verteilte_Systeme_2
+Repository für Verteilte Systeme 2 Labor
