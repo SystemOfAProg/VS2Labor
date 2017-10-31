@@ -1,0 +1,85 @@
+/* ========== Title ========== */
+
+div.titleContainer {
+	width: 100%;
+	padding: 1em;
+	box-sizing: border-box;
+	background-color: #FFF3E0;
+	color: white;
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+}
+
+img.titleImage {
+	width: 100%;
+	max-width: 500px;
+}
+
+/* ========== Navigation ========== */
+
+div.navigationBar {
+	display: flex;
+	height: 50px;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	background-color: white;
+}
+
+div#topbar {
+	height: 50px;
+	width: 100%;
+	background-color: white;
+}
+
+img.navigationLogo {
+	height: 3em;
+}
+
+div.buttonWrapper {
+	width: 200px;
+	display: flex;
+	justify-content: space-around;
+}
+
+div.searchBar {
+	width: 100%;
+	display: flex;
+	height: 50px;
+	justify-content: space-between;
+	align-items: center;
+	background-color: white;
+}
+
+input.searchInputField {
+	border: none;
+	width: calc(85% - 64px);
+	max-width: 400px;
+	outline: none;
+	padding: 0.5em 1em;
+	border-radius: 0.35em 0em 0em 0.35em;
+	background-color: #F5F5F5;
+}
+
+div.searchbarInputWrapper {
+	max-width: 500px;
+	display: flex;
+	justify-content: center;
+	width: 85%
+}
+
+div.searchbarLayoutPlaceholder{
+	height: 20px;
+	width: 50px;
+}
+
+button.searchButton {
+	height: 36px;
+	outline: none;
+	border: none;
+	border-radius: 0em 0.35em 0.35em 0em;
+	background-color: #FB8C00;
+	color: white;
+}
