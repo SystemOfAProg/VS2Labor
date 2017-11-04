@@ -34,21 +34,88 @@ div#topbar {
 	background-color: white;
 }
 
+div.topbarContent {
+	margin: auto;
+	max-width: 1080px;
+}
+
 img.navigationLogo {
 	height: 3em;
 }
 
-div.buttonWrapper {
-	width: 200px;
+div.buttonWrapperLeft {
+	width: 100%;
 	display: flex;
-	justify-content: space-around;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+div.buttonWrapperRight {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+button.button {
+	border-bottom: 4px solid white;
+	height: 50px;
+	width: 21vw;
+	max-width: 250px;
+	background-color: white;
+	font-weight: bold;
+	border-radius: 0em;
+	transition: ease-in-out 0.2s;
+}
+
+button.button:active {
+	border-bottom: 4px solid #FB8C00;
+	color: #FB8C00;
+	background-color: #FFE0B2;
+	transition: ease-in-out 0.2s;
+}
+
+div.button {
+	width: 21vw;
+	max-width: 250px;
+	display: flex;
+	justify-content: center;
+}
+
+div.button2 {
+	width: 21vw;
+	max-width: 157px;
+	display: flex;
+	justify-content: flex-start;
+}
+
+button.active {
+	border-bottom: 4px solid #FB8C00;
+	color: #FB8C00;
+	transition: ease-in-out 0.2s;
+}
+
+button.toggleSearch {
+	height: 42px;
+	width: 42px;
+	box-sizing: border-box;
+	margin-left: 1em;
+	margin-right: 1em;
+	background-color: #FB8C00;
+	font-weight: bold;
+	color: white;
+	border-radius: 36px;
+}
+
+button.marginRight {
+	margin-right: 1.5em;
 }
 
 div.searchBar {
 	width: 100%;
 	display: flex;
 	height: 50px;
-	justify-content: space-between;
+	justify-content: flex-end;
 	align-items: center;
 	background-color: white;
 }
@@ -82,4 +149,25 @@ button.searchButton {
 	border-radius: 0em 0.35em 0.35em 0em;
 	background-color: #FB8C00;
 	color: white;
+}
+
+/* ========== Navigation ========== */
+
+div.content {
+	width: 100%;
+	max-width: 1280px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	padding: 0.5em;
+	margin: auto;
+}
+
+div.postWrapper {
+	background-color: white;
+	border-radius: 0.25em;
+	box-sizing: border-box;
+	margin: 0.5em;
+	padding: 1em;
 }
