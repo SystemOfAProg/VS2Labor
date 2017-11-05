@@ -171,3 +171,67 @@ div.postWrapper {
 	margin: 0.5em;
 	padding: 1em;
 }
+
+/* ========== Post ========== */
+
+div.postHeadWrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	box-sizin: border-box;
+}
+
+div.profileImage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+img.profileImage {
+	width: 42px;
+	height: 42px;
+	border-radius: 56px;
+	overflow: hidden;
+}
+
+div.postNameImageWrapper {
+	display: flex;
+	flex-direction: row;
+}
+
+div.postNameWrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+h2.postFullName {
+	margin-left: 1em;
+	color: #14171a;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+h3.postTagName {
+	margin-left: 1em;
+	font-size: 14px;
+    color: #657786;
+}
+
+div.postTimeTag {
+	display: flex;
+	justify-content: flex-end;;
+}
+
+div.postTextWrapper {
+	margin-top: 1em;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+p.postText {
+	font-size: 14px;
+    line-height: 20px;
+}
