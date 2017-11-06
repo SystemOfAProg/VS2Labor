@@ -3,6 +3,8 @@
 	<head>
 		<title>Getting Started</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
 		<link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" />
 		<link href="../static/css/landingPage.css" th:href="@{/css/landingPage.css}" rel="stylesheet" />
@@ -10,8 +12,14 @@
 		<link href="../static/css/landingPage_tablet.css"  media="screen and (min-width:415px) and (max-width:768px)" th:href="@{/css/landingPage_tablet.css}" rel="stylesheet" />
 		<link href="../static/css/landingPage_desktop.css" media="screen and (min-width:769px)" th:href="@{/css/landingPage_desktop.css}" rel="stylesheet" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!-- The above 3 meta tags *must* come first in the head -->
+		<link th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+			rel="stylesheet" media="screen" />
+			<link th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+			rel="stylesheet" media="screen" />
 		<script type="text/javascript" th:src="@{/js/layout.js}"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script th:src="@{/webjars/bootstrap/3.3.4/js/bootstrap.min.js}"></script>
 	</head>
 	<!-- ======================================== BODY ======================================== -->
 	<body>
@@ -38,7 +46,7 @@
 					<div class="buttonWrapperRight">
 						<button class="button" > Meine Seite </button>
 						<div class="button">
-							<button class="toggleSearch" th:onclick="${'openSearchBar()'}" > <i class="material-icons">search</i> </button>				
+							<button class="toggleSearch" th:onclick="${'openSearchBar()'}" > <i class="material-icons button-icon">search</i> </button>				
 						</div>
 					</div>
 				</div>
@@ -48,7 +56,7 @@
 						<button class="searchButton"> Suchen </button>
 					</div>
 					<div class="button2">
-						<button class="toggleSearch" th:onclick="${'closeSearchBar()'}" > <i class="material-icons">close</i> </button>
+						<button class="toggleSearch" th:onclick="${'closeSearchBar()'}" > <i class="material-icons button-icon">close</i> </button>
 					</div>
 				</div>
 			</div>
@@ -66,15 +74,15 @@
 						</div>
 						<div class="postNameWrapper">
 							<div>
-								<h2 class="postFullName"> Donald Trump </h2>
+								<p class="postFullName"> Donald Trump </p>
 							</div>
 							<div>
-								<h3 class="postTagName"> @realDonaldTrump </h3>
+								<p class="postTagName"> @realDonaldTrump </p>
 							</div>
 						</div>
 					</div>
 					<div class="postTimeTag">
-						<h3 class="postTagName"> 20 Std. </h3>
+						<p class="postTagName"> 20 Std. </p>
 					</div>
 				</div>
 				<div class="postTextWrapper">
@@ -91,15 +99,15 @@
 						</div>
 						<div class="postNameWrapper">
 							<div>
-								<h2 class="postFullName"> Donald Trump </h2>
+								<p class="postFullName"> Donald Trump </p>
 							</div>
 							<div>
-								<h3 class="postTagName"> @realDonaldTrump </h3>
+								<p class="postTagName"> @realDonaldTrump </p>
 							</div>
 						</div>
 					</div>
 					<div class="postTimeTag">
-						<h3 class="postTagName"> 24 Std. </h3>
+						<p class="postTagName"> 24 Std. </p>
 					</div>
 				</div>
 				<div class="postTextWrapper">
@@ -118,15 +126,15 @@
 						</div>
 						<div class="postNameWrapper">
 							<div>
-								<h2 class="postFullName"> Donald Trump </h2>
+								<p class="postFullName"> Donald Trump </p>
 							</div>
 							<div>
-								<h3 class="postTagName"> @realDonaldTrump </h3>
+								<p class="postTagName"> @realDonaldTrump </p>
 							</div>
 						</div>
 					</div>
 					<div class="postTimeTag">
-						<h3 class="postTagName"> 4. Nov. </h3>
+						<p class="postTagName"> 4. Nov. </p>
 					</div>
 				</div>
 				<div class="postTextWrapper">
@@ -145,15 +153,15 @@
 						</div>
 						<div class="postNameWrapper">
 							<div>
-								<h2 class="postFullName"> Donald Trump </h2>
+								<p class="postFullName"> Donald Trump </p>
 							</div>
 							<div>
-								<h3 class="postTagName"> @realDonaldTrump </h3>
+								<p class="postTagName"> @realDonaldTrump </p>
 							</div>
 						</div>
 					</div>
 					<div class="postTimeTag">
-						<h3 class="postTagName"> 4. Nov. </h3>
+						<p class="postTagName"> 4. Nov. </p>
 					</div>
 				</div>
 				<div class="postTextWrapper">
@@ -172,15 +180,15 @@
 						</div>
 						<div class="postNameWrapper">
 							<div>
-								<h2 class="postFullName"> Donald Trump </h2>
+								<p class="postFullName"> Donald Trump </p>
 							</div>
 							<div>
-								<h3 class="postTagName"> @realDonaldTrump </h3>
+								<p class="postTagName"> @realDonaldTrump </p>
 							</div>
 						</div>
 					</div>
 					<div class="postTimeTag">
-						<h3 class="postTagName"> 3. Nov. </h3>
+						<p class="postTagName"> 3. Nov. </p>
 					</div>
 				</div>
 				<div class="postTextWrapper">
@@ -199,15 +207,15 @@
 						</div>
 						<div class="postNameWrapper">
 							<div>
-								<h2 class="postFullName"> Donald Trump </h2>
+								<p class="postFullName"> Donald Trump </p>
 							</div>
 							<div>
-								<h3 class="postTagName"> @realDonaldTrump </h3>
+								<p class="postTagName"> @realDonaldTrump </p>
 							</div>
 						</div>
 					</div>
 					<div class="postTimeTag">
-						<h3 class="postTagName"> 3. Nov </h3>
+						<p class="postTagName"> 3. Nov </p>
 					</div>
 				</div>
 				<div class="postTextWrapper">
@@ -217,6 +225,40 @@
 				</div>
 			</div>
 			
+		</div>
+		
+		<!-- Trigger the modal with a button -->
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+		
+		<!-- Modal -->
+		<div id="myModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+		
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Login</h4>
+		      </div>
+		      <div class="modal-body">
+		        <form class="inputForm">
+		        	<div class="loginFormLineWrapper">
+				  		<i class="material-icons button-icon">account_circle</i>
+				  		<input class="inputField" placeholder="Benutzername" type="text" name="username"/>
+		        	</div>
+		        	<div class="loginFormLineWrapper">
+						<i class="material-icons button-icon">lock</i>
+						<input class="inputField" placeholder="Passwort" type="password" name="psw"/>
+		        	</div>
+				</form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Anmelden</button>
+		      </div>
+		    </div>
+		
+		  </div>
 		</div>
 		
 	<!-- 

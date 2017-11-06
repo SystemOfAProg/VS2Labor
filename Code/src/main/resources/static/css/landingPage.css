@@ -105,6 +105,13 @@ button.toggleSearch {
 	font-weight: bold;
 	color: white;
 	border-radius: 36px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+i.button-icon {
+	font-size: 26px;
 }
 
 button.marginRight {
@@ -162,6 +169,7 @@ div.content {
 	box-sizing: border-box;
 	padding: 0.5em;
 	margin: auto;
+	background-color: #F5F5F5;
 }
 
 div.postWrapper {
@@ -206,14 +214,14 @@ div.postNameWrapper {
 	justify-content: space-around;
 }
 
-h2.postFullName {
+p.postFullName {
 	margin-left: 1em;
 	color: #14171a;
     font-size: 14px;
     font-weight: bold;
 }
 
-h3.postTagName {
+p.postTagName {
 	margin-left: 1em;
 	font-size: 14px;
     color: #657786;
@@ -235,3 +243,34 @@ p.postText {
 	font-size: 14px;
     line-height: 20px;
 }
+
+/* ========== Login Dialog ========== */
+
+input.inputField {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid #BDBDBD;
+	padding: 0.25em 1em;
+	margin: auto;
+	width: calc(100% - 28px);
+	max-width: 350px;
+	margin: 0.5em 1em;
+	font-size: 1.2em;
+}
+
+div.loginFormLineWrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+form.inputForm {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
