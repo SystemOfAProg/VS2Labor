@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<title>Getting Started</title>
+		<title>Trumpet - Spread your Fake News</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -60,6 +60,12 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		
+		<!-- Trigger the modal with a button -->
+		<div class="loginWrapper">
+			<button type="button" class="footer-button" data-toggle="modal" data-target="#myModal"> Registrieren 	</button>
+			<button type="button" class="footer-button" data-toggle="modal" data-target="#myModal"> Login 		</button>
 		</div>
 		
 		<!-- =================================== Content ====================================== -->
@@ -227,34 +233,32 @@
 			
 		</div>
 		
-		<!-- Trigger the modal with a button -->
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+		<!-- =============================== Login-Dialog ======================================= -->
 		
-		<!-- Modal -->
 		<div id="myModal" class="modal fade" role="dialog">
 		  <div class="modal-dialog">
 		
 		    <!-- Modal content-->
 		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Login</h4>
+		      <div class="dialogHeader">
+		        <h4 class="dialogTitle">Login</h4>
+		        <button type="button" class="dialogCloseButton" data-dismiss="modal"><i class="material-icons button-icon">close</i></button>
 		      </div>
 		      <div class="modal-body">
 		        <form class="inputForm">
 		        	<div class="loginFormLineWrapper">
-				  		<i class="material-icons button-icon">account_circle</i>
+				  		<i class="material-icons button-icon login-icon">account_circle</i>
 				  		<input class="inputField" placeholder="Benutzername" type="text" name="username"/>
 		        	</div>
 		        	<div class="loginFormLineWrapper">
-						<i class="material-icons button-icon">lock</i>
+						<i class="material-icons button-icon login-icon">lock</i>
 						<input class="inputField" placeholder="Passwort" type="password" name="psw"/>
 		        	</div>
 				</form>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Anmelden</button>
+		        <button type="button" class="cancelButton" data-dismiss="modal">Abbrechen</button>
+		        <button type="button" class="okButton" data-dismiss="modal">Anmelden</button>
 		      </div>
 		    </div>
 		
