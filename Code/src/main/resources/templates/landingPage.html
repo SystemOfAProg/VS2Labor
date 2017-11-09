@@ -53,7 +53,7 @@
 				<div id="searchbar" class="searchBar">
 					<div class="searchbarInputWrapper">
 						<input type="text" placeholder="Suchen" class="searchInputField"> </input>
-						<button class="searchButton"> Suchen </button>
+						<button class="searchButton" data-toggle="modal" data-target="#searchResults"> Suchen </button>
 					</div>
 					<div class="button2">
 						<button class="toggleSearch" th:onclick="${'closeSearchBar()'}" > <i class="material-icons button-icon">close</i> </button>
@@ -64,11 +64,24 @@
 		
 		<!-- Trigger the modal with a button -->
 		<div class="loginWrapper">
-			<button type="button" class="footer-button" data-toggle="modal" data-target="#myModal"> Registrieren 	</button>
-			<button type="button" class="footer-button" data-toggle="modal" data-target="#myModal"> Login 		</button>
+			<button type="button" class="footer-button" data-toggle="modal" data-target="#login"> Registrieren 	</button>
+			<button type="button" class="footer-button" data-toggle="modal" data-target="#login"> Login 		</button>
 		</div>
 		
 		<!-- =================================== Content ====================================== -->
+		<div class="newPostWrapper">
+			<div class="newPostContainer">
+				<form class="fakeNews">
+					<textarea placeholder="Covfefe..." class="fakeNewsInput" maxlength="146"></textarea>
+					<div class="newPostSendButtonWrapper">
+						<p>0/146</p>
+						<button class="trumpit"> Trump that </button>					
+					</div>
+				</form>
+			</div>
+		</div>
+		
+		
 		<div id="contentwrapper" class="content">
 		
 			<!-- =============================== Post 1 ======================================= -->
@@ -235,7 +248,7 @@
 		
 		<!-- =============================== Login-Dialog ======================================= -->
 		
-		<div id="myModal" class="modal fade" role="dialog">
+		<div id="login" class="modal fade" role="dialog">
 		  <div class="modal-dialog">
 		
 		    <!-- Modal content-->
@@ -244,7 +257,7 @@
 		        <h4 class="dialogTitle">Login</h4>
 		        <button type="button" class="dialogCloseButton" data-dismiss="modal"><i class="material-icons button-icon">close</i></button>
 		      </div>
-		      <div class="modal-body">
+		      <div class="dialogBody">
 		        <form class="inputForm">
 		        	<div class="loginFormLineWrapper">
 				  		<i class="material-icons button-icon login-icon">account_circle</i>
@@ -256,9 +269,73 @@
 		        	</div>
 				</form>
 		      </div>
-		      <div class="modal-footer">
+		      <div class="dialogFooter">
 		        <button type="button" class="cancelButton" data-dismiss="modal">Abbrechen</button>
 		        <button type="button" class="okButton" data-dismiss="modal">Anmelden</button>
+		      </div>
+		    </div>
+		
+		  </div>
+		</div>
+		
+		<!-- =============================== Search-Results ======================================= -->
+		
+		<div id="searchResults" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+		
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="dialogHeader">
+		        <h4 class="dialogTitle">Nutzer</h4>
+		        <button type="button" class="dialogCloseButton" data-dismiss="modal"><i class="material-icons button-icon">close</i></button>
+		      </div>
+		      <div class="dialogListBody">
+		      
+		        <div class="userListElement">
+					<div class="listProfileImage">
+						<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
+					</div>
+					<div class="listTextWrapper">
+						<p class="listFullName"> Donald Trump </p>
+					</div>
+					<div class="listTextWrapper">
+						<p class="listTagName"> @realDonaldTrump </p>
+					</div>
+					<div class="listTextWrapper">
+						<i class="material-icons">keyboard_arrow_right</i>
+					</div>
+				</div>
+				
+				<div class="userListElement">
+					<div class="listProfileImage">
+						<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
+					</div>
+					<div class="listTextWrapper">
+						<p class="listFullName"> Donald Trump </p>
+					</div>
+					<div class="listTextWrapper">
+						<p class="listTagName"> @realDonaldTrump </p>
+					</div>
+					<div class="listTextWrapper">
+						<i class="material-icons">keyboard_arrow_right</i>
+					</div>
+				</div>
+				
+				<div class="userListElement">
+					<div class="listProfileImage">
+						<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
+					</div>
+					<div class="listTextWrapper">
+						<p class="listFullName"> Donald Trump </p>
+					</div>
+					<div class="listTextWrapper">
+						<p class="listTagName"> @realDonaldTrump </p>
+					</div>
+					<div class="listTextWrapper">
+						<i class="material-icons">keyboard_arrow_right</i>
+					</div>
+				</div>
+				
 		      </div>
 		    </div>
 		
