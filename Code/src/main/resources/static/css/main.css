@@ -2,12 +2,12 @@
  *	||||||||||||||| Remove Browser default styles |||||||||||||||
  *  =============================================================
  */
- 
+
 html {
 	overflow-x: hidden !important;
 	min-height: 100vh;
 	background-color: #F5F5F5;
-} 
+}
 
 html, body, div {
 	 box-sizing: border-box;
@@ -54,7 +54,8 @@ acronym, abbr {
 }
 
 a, a:link, a:visited, a:active, a:hover {
-	text-decoration: underline;
+	text-decoration: none;
+  color: black !important;
 }
 
 img {
@@ -72,7 +73,7 @@ form {
 	padding: 0;
 	display: inline;
 }
- 
+
 label {
 	cursor: pointer;
 }

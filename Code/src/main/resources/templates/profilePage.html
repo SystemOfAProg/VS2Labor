@@ -39,12 +39,12 @@
 			<div class="topbarContent">
 				<div id="navigationbar" class="navigationBar">
 					<div class="buttonWrapperLeft">
-						<a th:href="@{/global}"> <button class="button active" > Global </button> </a>
+						<a th:href="@{/global}"> <button class="button" > Global </button> </a>
 						<a th:href="@{/subscriptions}"> <button class="button" > Meine Abos    </button> </a>
 					</div>
 					<img th:src="@{/images/logo.svg}" id="logoSmall" class="navigationLogo" />
 					<div class="buttonWrapperRight">
-						<a th:href="@{/profile}"> <button class="button" > Meine Seite </button> </a>
+						<a th:href="@{/profile}"> <button class="button active" > Meine Seite   </button> </a>
 						<div class="button">
 							<button class="toggleSearch" th:onclick="${'openSearchBar()'}" > <i class="material-icons button-icon">search</i> </button>
 						</div>
@@ -69,6 +69,18 @@
 		</div>
 
 		<!-- =================================== Content ====================================== -->
+		<div class="newPostWrapper">
+			<div class="newPostContainer">
+				<form class="fakeNews">
+					<textarea placeholder="Covfefe..." class="fakeNewsInput" maxlength="146"></textarea>
+					<div class="newPostSendButtonWrapper">
+						<p>0/146</p>
+						<button class="trumpit"> Trump that </button>
+					</div>
+				</form>
+			</div>
+		</div>
+
 
 		<div id="contentwrapper" class="content">
 
@@ -280,49 +292,49 @@
 		      <div class="dialogListBody">
 
 		        <div class="userListElement">
-					<div class="listProfileImage">
-						<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
-					</div>
-					<div class="listTextWrapper">
-						<p class="listFullName"> Donald Trump </p>
-					</div>
-					<div class="listTextWrapper">
-						<p class="listTagName"> @realDonaldTrump </p>
-					</div>
-					<div class="listTextWrapper">
-						<i class="material-icons">keyboard_arrow_right</i>
-					</div>
-				</div>
+							<div class="listProfileImage">
+								<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
+							</div>
+							<div class="listTextWrapper">
+								<p class="listFullName"> Donald Trump </p>
+							</div>
+							<div class="listTextWrapper">
+								<p class="listTagName"> @realDonaldTrump </p>
+							</div>
+							<div class="listTextWrapper">
+								<i class="material-icons">keyboard_arrow_right</i>
+							</div>
+						</div>
 
-				<div class="userListElement">
-					<div class="listProfileImage">
-						<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
-					</div>
-					<div class="listTextWrapper">
-						<p class="listFullName"> Donald Trump </p>
-					</div>
-					<div class="listTextWrapper">
-						<p class="listTagName"> @realDonaldTrump </p>
-					</div>
-					<div class="listTextWrapper">
-						<i class="material-icons">keyboard_arrow_right</i>
-					</div>
-				</div>
+						<div class="userListElement">
+							<div class="listProfileImage">
+								<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
+							</div>
+							<div class="listTextWrapper">
+								<p class="listFullName"> Donald Trump </p>
+							</div>
+							<div class="listTextWrapper">
+								<p class="listTagName"> @realDonaldTrump </p>
+							</div>
+							<div class="listTextWrapper">
+								<i class="material-icons">keyboard_arrow_right</i>
+							</div>
+						</div>
 
-				<div class="userListElement">
-					<div class="listProfileImage">
-						<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
-					</div>
-					<div class="listTextWrapper">
-						<p class="listFullName"> Donald Trump </p>
-					</div>
-					<div class="listTextWrapper">
-						<p class="listTagName"> @realDonaldTrump </p>
-					</div>
-					<div class="listTextWrapper">
-						<i class="material-icons">keyboard_arrow_right</i>
-					</div>
-				</div>
+						<div class="userListElement">
+							<div class="listProfileImage">
+								<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
+							</div>
+							<div class="listTextWrapper">
+								<p class="listFullName"> Donald Trump </p>
+							</div>
+							<div class="listTextWrapper">
+								<p class="listTagName"> @realDonaldTrump </p>
+							</div>
+							<div class="listTextWrapper">
+								<i class="material-icons">keyboard_arrow_right</i>
+							</div>
+						</div>
 
 		      </div>
 		    </div>
