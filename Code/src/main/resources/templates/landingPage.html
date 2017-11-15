@@ -6,11 +6,17 @@
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-		<link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" />
-		<link href="../static/css/landingPage.css" th:href="@{/css/landingPage.css}" rel="stylesheet" />
-		<link href="../static/css/landingPage_mobile.css"  media="screen and (min-width:0px) and (max-width:414px)" th:href="@{/css/landingPage_mobile.css}" rel="stylesheet" />
-		<link href="../static/css/landingPage_tablet.css"  media="screen and (min-width:415px) and (max-width:768px)" th:href="@{/css/landingPage_tablet.css}" rel="stylesheet" />
-		<link href="../static/css/landingPage_desktop.css" media="screen and (min-width:769px)" th:href="@{/css/landingPage_desktop.css}" rel="stylesheet" />
+		
+		<!-- ============================== Styles ============================== -->
+		<link href="../static/css/shared/main.css" 																					th:href="@{/css/shared/main.css}" 						rel="stylesheet" />
+		<link href="../static/css/shared/dialogs.css"     																			th:href="@{/css/shared/dialogs.css}"     				rel="stylesheet" />
+		<link href="../static/css/shared/navigationBar.css" 																		th:href="@{/css/shared/navigationBar.css}" 				rel="stylesheet" />
+		<link href="../static/css/shared/footerButtons.css" 																		th:href="@{/css/shared/footerButtons.css}"				rel="stylesheet" />
+		<link href="../static/css/globalPage/globalPage.css" 																		th:href="@{/css/globalPage/globalPage.css}" 			rel="stylesheet" />
+		<link href="../static/css/globalPage/globalPage_desktop.css" media="screen and (min-width:769px)" 							th:href="@{/css/globalPage/globalPage_desktop.css}" 	rel="stylesheet" />
+		<link href="../static/css/globalPage/globalPage_tablet.css"  media="screen and (min-width:415px) and (max-width:768px)" 	th:href="@{/css/globalPage/globalPage_tablet.css}" 		rel="stylesheet" />
+		<link href="../static/css/globalPage/globalPage_mobile.css"  media="screen and (min-width:0px) and (max-width:414px)" 		th:href="@{/css/globalPage/globalPage_mobile.css}" 		rel="stylesheet" />
+		
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 		<!-- The above 3 meta tags *must* come first in the head -->
 		<link th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"

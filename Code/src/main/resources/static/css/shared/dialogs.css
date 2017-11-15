@@ -1,0 +1,174 @@
+/* ========== Login Dialog ========== */
+
+input.inputField {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 2px solid #BDBDBD;
+	padding: 0.25em 1em;
+	margin: auto;
+	width: calc(100% - 28px);
+	max-width: 350px;
+	margin: 0.5em 1em;
+	font-size: 1.2em;
+}
+
+i.login-icon {
+	color: #BDBDBD !important;
+} 
+
+input.inputField:focus {
+	border-bottom: 2px solid #FB8C00;
+	outline: none;
+	box-shadow: none;
+}
+
+div.loginFormLineWrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+form.inputForm {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+button.okButton {
+	background-color: white;
+	color: #FB8C00;
+	border-radius: 3em;
+	border: 2px solid #FB8C00;
+	font-size: 1em;
+	padding: 0.15em 1em 0.15em 1em;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	width: 8em;
+}
+
+button.okButton:hover {
+	background-color: #FB8C00;
+	color: white;
+}
+
+button.cancelButton {
+	background-color: white;
+	color: #9E9E9E;
+	border-radius: 3em;
+	border: 2px solid #EEEEEE;
+	font-size: 1em;
+	padding: 0.15em 1em 0.15em 1em;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	width: 8em;
+}
+
+button.cancelButton:hover {
+	background-color: #EEEEEE;
+	color: #9E9E9E;
+}
+
+button.dialogCloseButton {
+	border: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #FB8C00;
+	border-radius: 100%;
+	color: white;
+	height: 2.2em;
+	width: 2.2em;
+}
+
+button.dialogCloseButton:hover {
+	background-color: white;
+	color: #FB8C00;
+}
+
+div.dialogHeader {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5em 2em;
+	background-color: #FB8C00;
+}
+
+div.dialogBody {
+	padding: 1em 2em;
+	background-color: white;
+}
+
+div.dialogFooter {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 1em 2em;
+	background-color: white;
+}
+
+h4.dialogTitle {
+	color: white;
+	font-size: 1.5em;
+}
+
+
+/* =============== User Search Dialog ==================== */
+
+div.userListElement {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	border-bottom: 1px solid #EEEEEE;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	cursor: pointer;
+	background-color: white;
+}
+
+div.userListElement:hover {
+	background-color: #FAFAFA;
+}
+
+div.listDialogBody {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 0em;
+	background-color: white;
+	border-radius: 0px;
+}
+
+div.listProfileImage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+img.listProfileImage {
+	border-radius: 56px;
+	overflow: hidden;
+}
+
+div.listTextWrapper {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+p.listFullName {
+	font-weight: bold;
+}
+
+p.listTagName {
+	color: #657786;
+}
