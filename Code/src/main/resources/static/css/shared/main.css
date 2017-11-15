@@ -19,6 +19,7 @@ html, body, div {
 body {
 	font: 1em/1.25 Arial, Helvetica, sans-serif;
 	background-color: #F5F5F5 !important;
+	padding-right: 0px !important;
 }
 
 h1, h2, h3, h4, h5, h6 {

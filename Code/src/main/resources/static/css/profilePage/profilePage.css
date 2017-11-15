@@ -1,11 +1,23 @@
+
 div.profilePageContentWrapper {
+	width: 100%;
+	max-width: 1200px;
+	padding-top: 0.5em;
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	margin: auto;
+	align-items: flex-start;
+}
+
+div.profilePagePosts {
 	width: 100%;
 	max-width: 800px;
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
 	flex-wrap: wrap;
 	box-sizing: border-box;
-	padding: 0.5em;
 	margin-bottom: 4em;
 	margin-left: auto;
 	margin-right: auto;
@@ -88,10 +100,11 @@ p.postText {
 
 div.newPostWrapper {
 	width: 100%;
+	max-width: 800px;
 	box-sizing: border-box;
-	padding-top: 1em;
-	padding-left: 1em;
-	padding-right: 1em;
+	margin-bottom: 1em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -100,7 +113,6 @@ div.newPostWrapper {
 
 div.newPostContainer {
 	width: 100%;
-	max-width: 800px;
 	background-color: white;
 	box-sizing: border-box;
 	overflow: hidden;
@@ -148,4 +160,75 @@ button.trumpit:hover {
 	background-color: #FB8C00;
 	color: white;
 	border: 2px solid #FB8C00;
+}
+
+/* =============== Profile-Page Personal Info =============== */
+
+div.profilePageUserInfo {
+	background-color: white;
+	box-sizing: border-box;
+	overflow: hidden;
+	padding: 1em;
+	border-radius: 0.25em;
+	margin-right: 1em;
+}
+
+div.profilePageNameWrapper {
+	margin-top: 1em;
+}
+
+div.profilePagePersonalInformation{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+img.profilePageProfileImage {
+	width: 200px;
+	height: 200px;
+	border-radius: 0.25em;
+}
+
+p.profilePageFullName {
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 28px;
+    margin-right: 2px;
+    word-wrap: break-word;
+}
+
+p.profilePageTagName {
+	color: #657786;
+}
+
+div.profilePageFollowerInfo {
+	margin-top: 1em;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+}
+
+div.profilePageFollowerWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 50%;
+	border-radius: 0.25em;
+}
+
+div.profilePageFollowerWrapper:hover {
+	background-color: #FAFAFA;
+	cursor: pointer;
+}
+
+p.profilePageFollowerHeadline {
+	color: #657786;
+	font-size: 16px;
+}
+
+p.profilePageFollowerValue {
+	color: #FB8C00;
+	font-size: 26px;
+    font-weight: bold;
 }
