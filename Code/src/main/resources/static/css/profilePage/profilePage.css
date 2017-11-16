@@ -1,0 +1,234 @@
+
+div.profilePageContentWrapper {
+	width: 100%;
+	max-width: 1200px;
+	padding-top: 0.5em;
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	margin: auto;
+	align-items: flex-start;
+}
+
+div.profilePagePosts {
+	width: 100%;
+	max-width: 800px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	margin-bottom: 4em;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #F5F5F5;
+}
+
+div.postWrapper {
+	background-color: white;
+	border-radius: 0.25em;
+	box-sizing: border-box;
+	margin: 0.5em;
+	padding: 1em;
+}
+
+/* ========== Post ========== */
+
+div.postHeadWrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	box-sizin: border-box;
+}
+
+div.profileImage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+img.profileImage {
+	width: 42px;
+	height: 42px;
+	border-radius: 56px;
+	overflow: hidden;
+}
+
+div.postNameImageWrapper {
+	display: flex;
+	flex-direction: row;
+}
+
+div.postNameWrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+p.postFullName {
+	margin-left: 1em !important;
+	color: #14171a;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+p.postTagName {
+	margin-left: 1em !important;
+	font-size: 14px;
+    color: #657786;
+}
+
+div.postTimeTag {
+	display: flex;
+	justify-content: flex-end;;
+}
+
+div.postTextWrapper {
+	margin-top: 1em;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+p.postText {
+	font-size: 14px;
+    line-height: 20px;
+}
+
+/* =============== New Post Wrapper ==================== */
+
+div.newPostWrapper {
+	width: 100%;
+	max-width: 800px;
+	box-sizing: border-box;
+	margin-bottom: 1em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+div.newPostContainer {
+	width: 100%;
+	background-color: white;
+	box-sizing: border-box;
+	overflow: hidden;
+	padding: 1em;
+	border-radius: 0.25em;
+}
+
+form.fakeNews {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+textarea.fakeNewsInput {
+	width: 100%;
+	resize: none;
+	padding: 1em;
+	border: none;
+	border-bottom: 1px solid #E0E0E0;
+}
+
+textarea.fakeNewsInput:focus {
+	outline: none;
+}
+
+div.newPostSendButtonWrapper {
+	margin-top: 1.5em;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items:center;
+}
+
+button.trumpit {
+	background-color: white;
+	width: 8em;
+	color: #FB8C00;
+	border-radius: 3em;
+	border: 2px solid #FB8C00;
+	font-size: 1em;
+	padding: 0.1em 1em 0.1em 1em;
+}
+
+button.trumpit:hover {
+	background-color: #FB8C00;
+	color: white;
+	border: 2px solid #FB8C00;
+}
+
+/* =============== Profile-Page Personal Info =============== */
+
+div.profilePageUserInfo {
+	background-color: white;
+	box-sizing: border-box;
+	overflow: hidden;
+	padding: 1em;
+	border-radius: 0.25em;
+	margin-right: 1em;
+}
+
+div.profilePageNameWrapper {
+	margin-top: 1em;
+}
+
+div.profilePagePersonalInformation{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+img.profilePageProfileImage {
+	width: 200px;
+	height: 200px;
+	border-radius: 0.25em;
+}
+
+p.profilePageFullName {
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 28px;
+    margin-right: 2px;
+    word-wrap: break-word;
+}
+
+p.profilePageTagName {
+	color: #657786;
+}
+
+div.profilePageFollowerInfo {
+	margin-top: 1em;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+}
+
+div.profilePageFollowerWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 50%;
+	border-radius: 0.25em;
+}
+
+div.profilePageFollowerWrapper:hover {
+	background-color: #FAFAFA;
+	cursor: pointer;
+}
+
+p.profilePageFollowerHeadline {
+	color: #657786;
+	font-size: 16px;
+}
+
+p.profilePageFollowerValue {
+	color: #FB8C00;
+	font-size: 26px;
+    font-weight: bold;
+}

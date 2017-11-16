@@ -23,7 +23,7 @@ div.navigationBar {
 	height: 50px;
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: center;
+	align-content: center;
 	width: 100%;
 	background-color: white;
 }
@@ -71,7 +71,6 @@ button.button {
 button.button:active {
 	border-bottom: 4px solid #FB8C00;
 	color: #FB8C00;
-	background-color: #FFE0B2;
 	transition: ease-in-out 0.2s;
 }
 
@@ -96,6 +95,22 @@ button.active {
 }
 
 button.toggleSearch {
+	height: 42px;
+	width: 42px;
+	box-sizing: border-box;
+	margin-left: 1em;
+	margin-right: 1em;
+	border: 2px solid #FB8C00;
+	font-weight: bold;
+	background-color: white;
+	color: #FB8C00;
+	border-radius: 36px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+button.toggleSearch:hover {
 	height: 42px;
 	width: 42px;
 	box-sizing: border-box;
@@ -154,123 +169,10 @@ button.searchButton {
 	outline: none;
 	border: none;
 	border-radius: 0em 0.35em 0.35em 0em;
-	background-color: #FB8C00;
+	background-color: #9E9E9E;
 	color: white;
 }
 
-/* ========== Navigation ========== */
-
-div.content {
-	width: 100%;
-	max-width: 1280px;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	box-sizing: border-box;
-	padding: 0.5em;
-	margin: auto;
-	background-color: #F5F5F5;
+button.searchButton:hover {
+	background-color: #FB8C00;
 }
-
-div.postWrapper {
-	background-color: white;
-	border-radius: 0.25em;
-	box-sizing: border-box;
-	margin: 0.5em;
-	padding: 1em;
-}
-
-/* ========== Post ========== */
-
-div.postHeadWrapper {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	width: 100%;
-	box-sizin: border-box;
-}
-
-div.profileImage {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-img.profileImage {
-	width: 42px;
-	height: 42px;
-	border-radius: 56px;
-	overflow: hidden;
-}
-
-div.postNameImageWrapper {
-	display: flex;
-	flex-direction: row;
-}
-
-div.postNameWrapper {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-}
-
-p.postFullName {
-	margin-left: 1em;
-	color: #14171a;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-p.postTagName {
-	margin-left: 1em;
-	font-size: 14px;
-    color: #657786;
-}
-
-div.postTimeTag {
-	display: flex;
-	justify-content: flex-end;;
-}
-
-div.postTextWrapper {
-	margin-top: 1em;
-	margin-left: 0.5em;
-	margin-right: 0.5em;
-	margin-bottom: 0.5em;
-}
-
-p.postText {
-	font-size: 14px;
-    line-height: 20px;
-}
-
-/* ========== Login Dialog ========== */
-
-input.inputField {
-	border-top: none;
-	border-left: none;
-	border-right: none;
-	border-bottom: 1px solid #BDBDBD;
-	padding: 0.25em 1em;
-	margin: auto;
-	width: calc(100% - 28px);
-	max-width: 350px;
-	margin: 0.5em 1em;
-	font-size: 1.2em;
-}
-
-div.loginFormLineWrapper {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-form.inputForm {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-}
-

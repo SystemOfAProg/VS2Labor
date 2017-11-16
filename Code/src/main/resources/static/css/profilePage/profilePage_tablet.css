@@ -1,0 +1,30 @@
+div.postWrapper {
+	width: calc(50% - 1em);
+}
+
+div.listProfileImage {
+	margin-right: 1em;
+	margin-left: 1em;
+}
+
+img.listProfileImage {
+	width: 42px;
+	height: 42px;
+}
+
+div.listTextWrapper {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+p.listFullName {
+	font-size: 1.1em;
+}
+
+p.listTagName {
+	font-size: 1.1em;
+}
+
+textarea.fakeNewsInput{
+	height: 6em;
+}

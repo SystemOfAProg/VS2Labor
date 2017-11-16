@@ -2,7 +2,6 @@ function main() {
 	$('#searchbar').hide();
 	$('#logoSmall').hide();
 	window.onscroll = handleTitleBarPosition;
-	addChangeListener();
 }
 
 function openSearchBar() {
@@ -27,34 +26,4 @@ function handleTitleBarPosition() {
         $('#contentwrapper').css({'paddingTop': '0.5em'});
         $('#logoSmall').slideUp(200);
     }
-}
-
-function addChangeListener() {
-	var buttons = $("button.button");
-	if(buttons != undefined) {
-		for(var button of buttons){
-			try {
-				button.addEventListener("click", toggleSelection );				
-			} catch(e) {
-				console.log(e);
-			}
-		}
-	}
-}
-
-function toggleSelection() {
-	var buttons = $("button.button");
-	if(buttons != undefined) {
-		for(var button of buttons){
-			try {
-				$(button).removeClass("active");		
-			} catch(e) {
-				console.log(e);
-			}
-		}
-	}
-	var target = $( event.target );
-	if(target != undefined) {
-		target.addClass("active");
-	}
 }

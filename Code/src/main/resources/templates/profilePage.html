@@ -1,0 +1,393 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Trumpet - Spread your Fake News</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+		
+		<!-- ============================== Styles ============================== -->
+		<link href="../static/css/shared/main.css" 																					th:href="@{/css/shared/main.css}" 						rel="stylesheet" />
+		<link href="../static/css/shared/dialogs.css"     																			th:href="@{/css/shared/dialogs.css}"     				rel="stylesheet" />
+		<link href="../static/css/shared/navigationBar.css" 																		th:href="@{/css/shared/navigationBar.css}" 				rel="stylesheet" />
+		<link href="../static/css/shared/footerButtons.css" 																		th:href="@{/css/shared/footerButtons.css}"				rel="stylesheet" />
+		<link href="../static/css/profilePage/profilePage.css" 																		th:href="@{/css/profilePage/profilePage.css}" 			rel="stylesheet" />
+		<link href="../static/css/profilePage/profilePage_desktop.css" media="screen and (min-width:1000px)" 						th:href="@{/css/profilePage/profilePage_desktop.css}" 	rel="stylesheet" />
+		<link href="../static/css/profilePage/profilePage_tablet.css"  media="screen and (min-width:620px) and (max-width:999px)" 	th:href="@{/css/profilePage/profilePage_tablet.css}" 	rel="stylesheet" />
+		<link href="../static/css/profilePage/profilePage_mobile.css"  media="screen and (min-width:0px) and (max-width:619px)" 	th:href="@{/css/profilePage/profilePage_mobile.css}" 	rel="stylesheet" />
+		
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+		<link th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+			rel="stylesheet" media="screen" />
+			<link th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+			rel="stylesheet" media="screen" />
+		<script type="text/javascript" th:src="@{/js/layout.js}"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script th:src="@{/webjars/bootstrap/3.3.4/js/bootstrap.min.js}"></script>
+	</head>
+	<!-- ======================================== BODY ======================================== -->
+	<body>
+
+		<script>
+			$( document ).ready(function() {
+				main();
+			});
+		</script>
+
+		<!-- =================================== TITLE ======================================== -->
+		<div id="titlecontainer" class="titleContainer">
+			<img th:src="@{/images/logoFont.svg}" class="titleImage" />
+		</div>
+		<!-- ================================= Navigation ===================================== -->
+		<div id="topbar">
+			<div class="topbarContent">
+				<div id="navigationbar" class="navigationBar">
+					<div class="buttonWrapperLeft">
+						<a th:href="@{/global}"> <button class="button" > Global </button> </a>
+						<a th:href="@{/subscriptions}"> <button class="button" > Meine Abos    </button> </a>
+					</div>
+					<img th:src="@{/images/logo.svg}" id="logoSmall" class="navigationLogo" />
+					<div class="buttonWrapperRight">
+						<a th:href="@{/profile}"> <button class="button active" > Meine Seite   </button> </a>
+						<div class="button">
+							<button class="toggleSearch" th:onclick="${'openSearchBar()'}" > <i class="material-icons button-icon">search</i> </button>
+						</div>
+					</div>
+				</div>
+				<div id="searchbar" class="searchBar">
+					<div class="searchbarInputWrapper">
+						<input type="text" placeholder="Suchen" class="searchInputField"> </input>
+						<button class="searchButton" data-toggle="modal" data-target="#searchResults"> Suchen </button>
+					</div>
+					<div class="button2">
+						<button class="toggleSearch" th:onclick="${'closeSearchBar()'}" > <i class="material-icons button-icon">close</i> </button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Trigger the modal with a button -->
+		<div class="loginWrapper">
+			<button type="button" class="footer-button" data-toggle="modal" data-target="#login"> Registrieren 	</button>
+			<button type="button" class="footer-button" data-toggle="modal" data-target="#login"> Login 		</button>
+		</div>
+		
+		<div id="contentwrapper" class="profilePageContentWrapper">
+			<div class="profilePageUserInfo">
+				<div class="profilePagePersonalInformation">
+					<img th:src="@{/images/profileImage.jpg}" class="profilePageProfileImage"/>
+				</div>
+				<div>
+					<div class="profilePageNameWrapper">
+						<p class="profilePageFullName"> Donald Trump </p>
+						<p class="profilePageTagName"> @realDonaldTrump </p>
+					</div>
+					<div class="profilePageFollowerInfo">
+						<div class="profilePageFollowerWrapper" data-toggle="modal" data-target="#searchResults">
+							<p class="profilePageFollowerHeadline"> Followers </p>
+							<p class="profilePageFollowerValue"> 140 </p>
+						</div>
+						<div class="profilePageFollowerWrapper" data-toggle="modal" data-target="#searchResults">
+							<p class="profilePageFollowerHeadline"> Following </p>
+							<p class="profilePageFollowerValue"> 140 </p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="profilePagePostsWrapper">
+				<!-- =================================== Content ====================================== -->
+				<div class="newPostWrapper">
+					<div class="newPostContainer">
+						<form class="fakeNews">
+							<textarea placeholder="Covfefe..." class="fakeNewsInput" maxlength="146"></textarea>
+							<div class="newPostSendButtonWrapper">
+								<p>0/146</p>
+								<button class="trumpit"> Trump that </button>
+							</div>
+						</form>
+					</div>
+				</div>
+		
+				<!-- =================================== Post-Wrapper ====================================== -->
+				<div class="profilePagePosts">
+		
+					<!-- =============================== Post 1 ======================================= -->
+					<div class="postWrapper">
+						<div class="postHeadWrapper">
+							<div class="postNameImageWrapper">
+								<div class="profileImage">
+									<img th:src="@{/images/profileImage.jpg}" class="profileImage"/>
+								</div>
+								<div class="postNameWrapper">
+									<div>
+										<p class="postFullName"> Donald Trump </p>
+									</div>
+									<div>
+										<p class="postTagName"> @realDonaldTrump </p>
+									</div>
+								</div>
+							</div>
+							<div class="postTimeTag">
+								<p class="postTagName"> 20 Std. </p>
+							</div>
+						</div>
+						<div class="postTextWrapper">
+							<p class="postText"> I have never seen a thin person drinking Diet Coke. </p>
+						</div>
+					</div>
+		
+					<!-- =============================== Post 2 ======================================= -->
+					<div class="postWrapper">
+						<div class="postHeadWrapper">
+							<div class="postNameImageWrapper">
+								<div class="profileImage">
+									<img th:src="@{/images/profileImage.jpg}" class="profileImage"/>
+								</div>
+								<div class="postNameWrapper">
+									<div>
+										<p class="postFullName"> Donald Trump </p>
+									</div>
+									<div>
+										<p class="postTagName"> @realDonaldTrump </p>
+									</div>
+								</div>
+							</div>
+							<div class="postTimeTag">
+								<p class="postTagName"> 24 Std. </p>
+							</div>
+						</div>
+						<div class="postTextWrapper">
+							<p class="postText">
+								President Obama - close down the flights from Ebola infected areas right now, before it is too late! What the hell is wrong with you?
+							</p>
+						</div>
+					</div>
+		
+					<!-- =============================== Post 3 ======================================= -->
+					<div class="postWrapper">
+						<div class="postHeadWrapper">
+							<div class="postNameImageWrapper">
+								<div class="profileImage">
+									<img th:src="@{/images/profileImage.jpg}" class="profileImage"/>
+								</div>
+								<div class="postNameWrapper">
+									<div>
+										<p class="postFullName"> Donald Trump </p>
+									</div>
+									<div>
+										<p class="postTagName"> @realDonaldTrump </p>
+									</div>
+								</div>
+							</div>
+							<div class="postTimeTag">
+								<p class="postTagName"> 4. Nov. </p>
+							</div>
+						</div>
+						<div class="postTextWrapper">
+							<p class="postText">
+								The U.S. cannot allow EBOLA infected people back. People that go to far away places to help out are great-but must suffer the consequences!
+							</p>
+						</div>
+					</div>
+		
+					<!-- =============================== Post 4 ======================================= -->
+					<div class="postWrapper">
+						<div class="postHeadWrapper">
+							<div class="postNameImageWrapper">
+								<div class="profileImage">
+									<img th:src="@{/images/profileImage.jpg}" class="profileImage"/>
+								</div>
+								<div class="postNameWrapper">
+									<div>
+										<p class="postFullName"> Donald Trump </p>
+									</div>
+									<div>
+										<p class="postTagName"> @realDonaldTrump </p>
+									</div>
+								</div>
+							</div>
+							<div class="postTimeTag">
+								<p class="postTagName"> 4. Nov. </p>
+							</div>
+						</div>
+						<div class="postTextWrapper">
+							<p class="postText">
+								Amazing how the haters and losers keep tweeting the name “F**kface Von Clownstick” like they are so original and like no one else is doing it...
+							</p>
+						</div>
+					</div>
+		
+					<!-- =============================== Post 5 ======================================= -->
+					<div class="postWrapper">
+						<div class="postHeadWrapper">
+							<div class="postNameImageWrapper">
+								<div class="profileImage">
+									<img th:src="@{/images/profileImage.jpg}" class="profileImage"/>
+								</div>
+								<div class="postNameWrapper">
+									<div>
+										<p class="postFullName"> Donald Trump </p>
+									</div>
+									<div>
+										<p class="postTagName"> @realDonaldTrump </p>
+									</div>
+								</div>
+							</div>
+							<div class="postTimeTag">
+								<p class="postTagName"> 3. Nov. </p>
+							</div>
+						</div>
+						<div class="postTextWrapper">
+							<p class="postText">
+								Terrible! Just found out that Obama had my "wires tapped" in Trump Tower just before the victory. Nothing found. This is McCarthyism!
+							</p>
+						</div>
+					</div>
+		
+					<!-- =============================== Post 6 ======================================= -->
+					<div class="postWrapper">
+						<div class="postHeadWrapper">
+							<div class="postNameImageWrapper">
+								<div class="profileImage">
+									<img th:src="@{/images/profileImage.jpg}" class="profileImage"/>
+								</div>
+								<div class="postNameWrapper">
+									<div>
+										<p class="postFullName"> Donald Trump </p>
+									</div>
+									<div>
+										<p class="postTagName"> @realDonaldTrump </p>
+									</div>
+								</div>
+							</div>
+							<div class="postTimeTag">
+								<p class="postTagName"> 3. Nov </p>
+							</div>
+						</div>
+						<div class="postTextWrapper">
+							<p class="postText">
+								I promise to rebuild our military and secure our border. Democrats want to shut down the government. Politics!
+							</p>
+						</div>
+					</div>
+		
+				</div>
+			</div>
+		</div>
+	
+
+		<!-- =============================== Login-Dialog ======================================= -->
+
+		<div id="login" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="dialogHeader">
+		        <h4 class="dialogTitle">Login</h4>
+		        <button type="button" class="dialogCloseButton" data-dismiss="modal"><i class="material-icons button-icon">close</i></button>
+		      </div>
+		      <div class="dialogBody">
+		        <form class="inputForm">
+		        	<div class="loginFormLineWrapper">
+				  		<i class="material-icons button-icon login-icon">account_circle</i>
+				  		<input class="inputField" placeholder="Benutzername" type="text" name="username"/>
+		        	</div>
+		        	<div class="loginFormLineWrapper">
+						<i class="material-icons button-icon login-icon">lock</i>
+						<input class="inputField" placeholder="Passwort" type="password" name="psw"/>
+		        	</div>
+				</form>
+		      </div>
+		      <div class="dialogFooter">
+		        <button type="button" class="cancelButton" data-dismiss="modal">Abbrechen</button>
+		        <button type="button" class="okButton" data-dismiss="modal">Anmelden</button>
+		      </div>
+		    </div>
+
+		  </div>
+		</div>
+
+		<!-- =============================== Search-Results ======================================= -->
+
+		<div id="searchResults" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="dialogHeader">
+		        <h4 class="dialogTitle">Nutzer</h4>
+		        <button type="button" class="dialogCloseButton" data-dismiss="modal"><i class="material-icons button-icon">close</i></button>
+		      </div>
+		      <div class="dialogListBody">
+
+		        <div class="userListElement">
+							<div class="listProfileImage">
+								<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
+							</div>
+							<div class="listTextWrapper">
+								<p class="listFullName"> Donald Trump </p>
+							</div>
+							<div class="listTextWrapper">
+								<p class="listTagName"> @realDonaldTrump </p>
+							</div>
+							<div class="listTextWrapper">
+								<i class="material-icons">keyboard_arrow_right</i>
+							</div>
+						</div>
+
+						<div class="userListElement">
+							<div class="listProfileImage">
+								<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
+							</div>
+							<div class="listTextWrapper">
+								<p class="listFullName"> Donald Trump </p>
+							</div>
+							<div class="listTextWrapper">
+								<p class="listTagName"> @realDonaldTrump </p>
+							</div>
+							<div class="listTextWrapper">
+								<i class="material-icons">keyboard_arrow_right</i>
+							</div>
+						</div>
+
+						<div class="userListElement">
+							<div class="listProfileImage">
+								<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
+							</div>
+							<div class="listTextWrapper">
+								<p class="listFullName"> Donald Trump </p>
+							</div>
+							<div class="listTextWrapper">
+								<p class="listTagName"> @realDonaldTrump </p>
+							</div>
+							<div class="listTextWrapper">
+								<i class="material-icons">keyboard_arrow_right</i>
+							</div>
+						</div>
+
+		      </div>
+		    </div>
+
+		  </div>
+		</div>
+
+	<!--
+		<h1>Greeting!</h1>
+		<p th:text="'Hello ' + ( ${greeting.name} != null ? ${greeting.name} : 'World') + '!'" />
+		<p th:text="${greeting.content} != null ? 'Your message: ' + ${greeting.content}" />
+
+		<h3>Your Comment</h3>
+		<form action="#" th:action="@{/greeting}" th:object="${greeting}"
+			method="post">
+			<p> Name <input type="text" th:field="*{name}" /></p>
+			<p> Message <input type="text" th:field="*{content}" /></p>
+			<p> Bootstrap <input type="checkbox" th:field="*{bootstrap}"/></p>
+			<p> <input type="submit" value="Submit" /></p>
+		</form>
+		<a th:href="@{/greeting}">Reset</a>
+	 -->
+
+	</body>
+</html>
