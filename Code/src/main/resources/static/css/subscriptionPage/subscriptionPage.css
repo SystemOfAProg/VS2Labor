@@ -1,0 +1,87 @@
+/* ========== PostsWrapper ========== */
+
+div.content {
+	width: 100%;
+	max-width: 1280px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	padding: 0.5em;
+	margin-bottom: 4em;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #F5F5F5;
+}
+
+div.postWrapper {
+	background-color: white;
+	border-radius: 0.25em;
+	box-sizing: border-box;
+	margin: 0.5em;
+	padding: 1em;
+}
+
+/* ========== Post ========== */
+
+div.postHeadWrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	box-sizin: border-box;
+}
+
+div.profileImage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+img.profileImage {
+	width: 42px;
+	height: 42px;
+	border-radius: 56px;
+	overflow: hidden;
+}
+
+div.postNameImageWrapper {
+	display: flex;
+	flex-direction: row;
+}
+
+div.postNameWrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+p.postFullName {
+	margin-left: 1em !important;
+	color: #14171a;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+p.postTagName {
+	margin-left: 1em !important;
+	font-size: 14px;
+    color: #657786;
+}
+
+div.postTimeTag {
+	display: flex;
+	justify-content: flex-end;;
+}
+
+div.postTextWrapper {
+	margin-top: 1em;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+p.postText {
+	font-size: 14px;
+    line-height: 20px;
+}

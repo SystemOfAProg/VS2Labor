@@ -1,16 +1,22 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<title>Getting Started</title>
+		<title>Trumpet - Spread your Fake News</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-		<link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" />
-		<link href="../static/css/landingPage.css" th:href="@{/css/landingPage.css}" rel="stylesheet" />
-		<link href="../static/css/landingPage_mobile.css"  media="screen and (min-width:0px) and (max-width:414px)" th:href="@{/css/landingPage_mobile.css}" rel="stylesheet" />
-		<link href="../static/css/landingPage_tablet.css"  media="screen and (min-width:415px) and (max-width:768px)" th:href="@{/css/landingPage_tablet.css}" rel="stylesheet" />
-		<link href="../static/css/landingPage_desktop.css" media="screen and (min-width:769px)" th:href="@{/css/landingPage_desktop.css}" rel="stylesheet" />
+		
+		<!-- ============================== Styles ============================== -->
+		<link href="../static/css/shared/main.css" 																					th:href="@{/css/shared/main.css}" 						rel="stylesheet" />
+		<link href="../static/css/shared/dialogs.css"     																			th:href="@{/css/shared/dialogs.css}"     				rel="stylesheet" />
+		<link href="../static/css/shared/navigationBar.css" 																		th:href="@{/css/shared/navigationBar.css}" 				rel="stylesheet" />
+		<link href="../static/css/shared/footerButtons.css" 																		th:href="@{/css/shared/footerButtons.css}"				rel="stylesheet" />
+		<link href="../static/css/globalPage/globalPage.css" 																		th:href="@{/css/globalPage/globalPage.css}" 			rel="stylesheet" />
+		<link href="../static/css/globalPage/globalPage_desktop.css" media="screen and (min-width:1000px)" 							th:href="@{/css/globalPage/globalPage_desktop.css}" 	rel="stylesheet" />
+		<link href="../static/css/globalPage/globalPage_tablet.css"  media="screen and (min-width:650px) and (max-width:999px)" 	th:href="@{/css/globalPage/globalPage_tablet.css}" 		rel="stylesheet" />
+		<link href="../static/css/globalPage/globalPage_mobile.css"  media="screen and (min-width:0px) and (max-width:649px)" 		th:href="@{/css/globalPage/globalPage_mobile.css}" 		rel="stylesheet" />
+		
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 		<!-- The above 3 meta tags *must* come first in the head -->
 		<link th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
@@ -23,13 +29,13 @@
 	</head>
 	<!-- ======================================== BODY ======================================== -->
 	<body>
-	
+
 		<script>
 			$( document ).ready(function() {
 				main();
-			});			
+			});
 		</script>
-		
+
 		<!-- =================================== TITLE ======================================== -->
 		<div id="titlecontainer" class="titleContainer">
 			<img th:src="@{/images/logoFont.svg}" class="titleImage" />
@@ -39,21 +45,21 @@
 			<div class="topbarContent">
 				<div id="navigationbar" class="navigationBar">
 					<div class="buttonWrapperLeft">
-						<button class="button active" > Global </button>
-						<button class="button" > Meine Abos </button>
+						<a th:href="@{/global}"> <button class="button active" > Global </button> </a>
+						<a th:href="@{/subscriptions}"> <button class="button" > Meine Abos    </button> </a>
 					</div>
 					<img th:src="@{/images/logo.svg}" id="logoSmall" class="navigationLogo" />
 					<div class="buttonWrapperRight">
-						<button class="button" > Meine Seite </button>
+						<a th:href="@{/profile}"> <button class="button" > Meine Seite </button> </a>
 						<div class="button">
-							<button class="toggleSearch" th:onclick="${'openSearchBar()'}" > <i class="material-icons button-icon">search</i> </button>				
+							<button class="toggleSearch" th:onclick="${'openSearchBar()'}" > <i class="material-icons button-icon">search</i> </button>
 						</div>
 					</div>
 				</div>
 				<div id="searchbar" class="searchBar">
 					<div class="searchbarInputWrapper">
 						<input type="text" placeholder="Suchen" class="searchInputField"> </input>
-						<button class="searchButton"> Suchen </button>
+						<button class="searchButton" data-toggle="modal" data-target="#searchResults"> Suchen </button>
 					</div>
 					<div class="button2">
 						<button class="toggleSearch" th:onclick="${'closeSearchBar()'}" > <i class="material-icons button-icon">close</i> </button>
@@ -61,10 +67,17 @@
 				</div>
 			</div>
 		</div>
-		
+
+		<!-- Trigger the modal with a button -->
+		<div class="loginWrapper">
+			<button type="button" class="footer-button" data-toggle="modal" data-target="#login"> Registrieren 	</button>
+			<button type="button" class="footer-button" data-toggle="modal" data-target="#login"> Login 		</button>
+		</div>
+
 		<!-- =================================== Content ====================================== -->
+
 		<div id="contentwrapper" class="content">
-		
+
 			<!-- =============================== Post 1 ======================================= -->
 			<div class="postWrapper">
 				<div class="postHeadWrapper">
@@ -89,7 +102,7 @@
 					<p class="postText"> I have never seen a thin person drinking Diet Coke. </p>
 				</div>
 			</div>
-			
+
 			<!-- =============================== Post 2 ======================================= -->
 			<div class="postWrapper">
 				<div class="postHeadWrapper">
@@ -116,7 +129,7 @@
 					</p>
 				</div>
 			</div>
-			
+
 			<!-- =============================== Post 3 ======================================= -->
 			<div class="postWrapper">
 				<div class="postHeadWrapper">
@@ -138,12 +151,12 @@
 					</div>
 				</div>
 				<div class="postTextWrapper">
-					<p class="postText"> 
+					<p class="postText">
 						The U.S. cannot allow EBOLA infected people back. People that go to far away places to help out are great-but must suffer the consequences!
 					</p>
 				</div>
 			</div>
-			
+
 			<!-- =============================== Post 4 ======================================= -->
 			<div class="postWrapper">
 				<div class="postHeadWrapper">
@@ -165,12 +178,12 @@
 					</div>
 				</div>
 				<div class="postTextWrapper">
-					<p class="postText"> 
+					<p class="postText">
 						Amazing how the haters and losers keep tweeting the name “F**kface Von Clownstick” like they are so original and like no one else is doing it...
 					</p>
 				</div>
 			</div>
-			
+
 			<!-- =============================== Post 5 ======================================= -->
 			<div class="postWrapper">
 				<div class="postHeadWrapper">
@@ -197,7 +210,7 @@
 					</p>
 				</div>
 			</div>
-			
+
 			<!-- =============================== Post 6 ======================================= -->
 			<div class="postWrapper">
 				<div class="postHeadWrapper">
@@ -224,48 +237,110 @@
 					</p>
 				</div>
 			</div>
-			
+
 		</div>
-		
-		<!-- Trigger the modal with a button -->
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-		
-		<!-- Modal -->
-		<div id="myModal" class="modal fade" role="dialog">
+
+		<!-- =============================== Login-Dialog ======================================= -->
+
+		<div id="login" class="modal fade" role="dialog">
 		  <div class="modal-dialog">
-		
+
 		    <!-- Modal content-->
 		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Login</h4>
+		      <div class="dialogHeader">
+		        <h4 class="dialogTitle">Login</h4>
+		        <button type="button" class="dialogCloseButton" data-dismiss="modal"><i class="material-icons button-icon">close</i></button>
 		      </div>
-		      <div class="modal-body">
+		      <div class="dialogBody">
 		        <form class="inputForm">
 		        	<div class="loginFormLineWrapper">
-				  		<i class="material-icons button-icon">account_circle</i>
+				  		<i class="material-icons button-icon login-icon">account_circle</i>
 				  		<input class="inputField" placeholder="Benutzername" type="text" name="username"/>
 		        	</div>
 		        	<div class="loginFormLineWrapper">
-						<i class="material-icons button-icon">lock</i>
+						<i class="material-icons button-icon login-icon">lock</i>
 						<input class="inputField" placeholder="Passwort" type="password" name="psw"/>
 		        	</div>
 				</form>
 		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Anmelden</button>
+		      <div class="dialogFooter">
+		        <button type="button" class="cancelButton" data-dismiss="modal">Abbrechen</button>
+		        <button type="button" class="okButton" data-dismiss="modal">Anmelden</button>
 		      </div>
 		    </div>
-		
+
 		  </div>
 		</div>
-		
-	<!-- 
+
+		<!-- =============================== Search-Results ======================================= -->
+
+		<div id="searchResults" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="dialogHeader">
+		        <h4 class="dialogTitle">Nutzer</h4>
+		        <button type="button" class="dialogCloseButton" data-dismiss="modal"><i class="material-icons button-icon">close</i></button>
+		      </div>
+		      <div class="dialogListBody">
+
+		        <div class="userListElement">
+					<div class="listProfileImage">
+						<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
+					</div>
+					<div class="listTextWrapper">
+						<p class="listFullName"> Donald Trump </p>
+					</div>
+					<div class="listTextWrapper">
+						<p class="listTagName"> @realDonaldTrump </p>
+					</div>
+					<div class="listTextWrapper">
+						<i class="material-icons">keyboard_arrow_right</i>
+					</div>
+				</div>
+
+				<div class="userListElement">
+					<div class="listProfileImage">
+						<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
+					</div>
+					<div class="listTextWrapper">
+						<p class="listFullName"> Donald Trump </p>
+					</div>
+					<div class="listTextWrapper">
+						<p class="listTagName"> @realDonaldTrump </p>
+					</div>
+					<div class="listTextWrapper">
+						<i class="material-icons">keyboard_arrow_right</i>
+					</div>
+				</div>
+
+				<div class="userListElement">
+					<div class="listProfileImage">
+						<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
+					</div>
+					<div class="listTextWrapper">
+						<p class="listFullName"> Donald Trump </p>
+					</div>
+					<div class="listTextWrapper">
+						<p class="listTagName"> @realDonaldTrump </p>
+					</div>
+					<div class="listTextWrapper">
+						<i class="material-icons">keyboard_arrow_right</i>
+					</div>
+				</div>
+
+		      </div>
+		    </div>
+
+		  </div>
+		</div>
+
+	<!--
 		<h1>Greeting!</h1>
 		<p th:text="'Hello ' + ( ${greeting.name} != null ? ${greeting.name} : 'World') + '!'" />
 		<p th:text="${greeting.content} != null ? 'Your message: ' + ${greeting.content}" />
-	
+
 		<h3>Your Comment</h3>
 		<form action="#" th:action="@{/greeting}" th:object="${greeting}"
 			method="post">
@@ -276,6 +351,6 @@
 		</form>
 		<a th:href="@{/greeting}">Reset</a>
 	 -->
-	 
+
 	</body>
 </html>
