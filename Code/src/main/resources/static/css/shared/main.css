@@ -79,7 +79,7 @@ label {
 	cursor: pointer;
 }
 
-button {
+button, input {
 	outline: none;
 	border: none;
 	cursor: pointer;

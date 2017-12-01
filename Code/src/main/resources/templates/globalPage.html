@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>Trumpet - Spread your Fake News</title>
@@ -6,7 +6,7 @@
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-		
+
 		<!-- ============================== Styles ============================== -->
 		<link href="../static/css/shared/main.css" 																					th:href="@{/css/shared/main.css}" 						rel="stylesheet" />
 		<link href="../static/css/shared/dialogs.css"     																			th:href="@{/css/shared/dialogs.css}"     				rel="stylesheet" />
@@ -16,7 +16,7 @@
 		<link href="../static/css/globalPage/globalPage_desktop.css" media="screen and (min-width:1000px)" 							th:href="@{/css/globalPage/globalPage_desktop.css}" 	rel="stylesheet" />
 		<link href="../static/css/globalPage/globalPage_tablet.css"  media="screen and (min-width:650px) and (max-width:999px)" 	th:href="@{/css/globalPage/globalPage_tablet.css}" 		rel="stylesheet" />
 		<link href="../static/css/globalPage/globalPage_mobile.css"  media="screen and (min-width:0px) and (max-width:649px)" 		th:href="@{/css/globalPage/globalPage_mobile.css}" 		rel="stylesheet" />
-		
+
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 		<!-- The above 3 meta tags *must* come first in the head -->
 		<link th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
@@ -50,7 +50,7 @@
 					</div>
 					<img th:src="@{/images/logo.svg}" id="logoSmall" class="navigationLogo" />
 					<div class="buttonWrapperRight">
-						<a th:href="@{/profile}"> <button class="button" > Meine Seite </button> </a>
+						<a  th:href="@{/profile/Donald%20Trump}"> <button class="button" > Meine Seite </button> </a>
 						<div class="button">
 							<button class="toggleSearch" th:onclick="${'openSearchBar()'}" > <i class="material-icons button-icon">search</i> </button>
 						</div>
@@ -78,165 +78,34 @@
 
 		<div id="contentwrapper" class="content">
 
-			<!-- =============================== Post 1 ======================================= -->
-			<div class="postWrapper">
-				<div class="postHeadWrapper">
-					<div class="postNameImageWrapper">
-						<div class="profileImage">
-							<img th:src="@{/images/profileImage.jpg}" class="profileImage"/>
+			<!-- =============================== Post ======================================= -->
+			<th:block th:each="tweet : ${page.globalTweets}">
+				<div th:object="${tweet}" class="postWrapper">
+					<div class="postHeadWrapper">
+						<div class="postNameImageWrapper">
+							<div class="profileImage">
+								<img th:src="@{/images/profileImage.jpg}" class="profileImage"/>
+							</div>
+							<a th:href="@{'/profile/'+${tweet.user.name}}">
+								<div class="postNameWrapper">
+									<div>
+										<p th:text="${tweet.user.name}" class="postFullName"> </p>
+									</div>
+									<div>
+										<p th:text="${tweet.user.tagName}" class="postTagName"></p>
+									</div>
+								</div>
+							</a>
 						</div>
-						<div class="postNameWrapper">
-							<div>
-								<p class="postFullName"> Donald Trump </p>
-							</div>
-							<div>
-								<p class="postTagName"> @realDonaldTrump </p>
-							</div>
-						</div>
-					</div>
-					<div class="postTimeTag">
-						<p class="postTagName"> 20 Std. </p>
-					</div>
-				</div>
-				<div class="postTextWrapper">
-					<p class="postText"> I have never seen a thin person drinking Diet Coke. </p>
-				</div>
-			</div>
-
-			<!-- =============================== Post 2 ======================================= -->
-			<div class="postWrapper">
-				<div class="postHeadWrapper">
-					<div class="postNameImageWrapper">
-						<div class="profileImage">
-							<img th:src="@{/images/profileImage.jpg}" class="profileImage"/>
-						</div>
-						<div class="postNameWrapper">
-							<div>
-								<p class="postFullName"> Donald Trump </p>
-							</div>
-							<div>
-								<p class="postTagName"> @realDonaldTrump </p>
-							</div>
+						<div class="postTimeTag">
+							<p th:text="${tweet.timeStamp}" class="postTagName"> </p>
 						</div>
 					</div>
-					<div class="postTimeTag">
-						<p class="postTagName"> 24 Std. </p>
+					<div class="postTextWrapper">
+						<p th:text="${tweet.message}" class="postText"> </p>
 					</div>
 				</div>
-				<div class="postTextWrapper">
-					<p class="postText">
-						President Obama - close down the flights from Ebola infected areas right now, before it is too late! What the hell is wrong with you?
-					</p>
-				</div>
-			</div>
-
-			<!-- =============================== Post 3 ======================================= -->
-			<div class="postWrapper">
-				<div class="postHeadWrapper">
-					<div class="postNameImageWrapper">
-						<div class="profileImage">
-							<img th:src="@{/images/profileImage.jpg}" class="profileImage"/>
-						</div>
-						<div class="postNameWrapper">
-							<div>
-								<p class="postFullName"> Donald Trump </p>
-							</div>
-							<div>
-								<p class="postTagName"> @realDonaldTrump </p>
-							</div>
-						</div>
-					</div>
-					<div class="postTimeTag">
-						<p class="postTagName"> 4. Nov. </p>
-					</div>
-				</div>
-				<div class="postTextWrapper">
-					<p class="postText">
-						The U.S. cannot allow EBOLA infected people back. People that go to far away places to help out are great-but must suffer the consequences!
-					</p>
-				</div>
-			</div>
-
-			<!-- =============================== Post 4 ======================================= -->
-			<div class="postWrapper">
-				<div class="postHeadWrapper">
-					<div class="postNameImageWrapper">
-						<div class="profileImage">
-							<img th:src="@{/images/profileImage.jpg}" class="profileImage"/>
-						</div>
-						<div class="postNameWrapper">
-							<div>
-								<p class="postFullName"> Donald Trump </p>
-							</div>
-							<div>
-								<p class="postTagName"> @realDonaldTrump </p>
-							</div>
-						</div>
-					</div>
-					<div class="postTimeTag">
-						<p class="postTagName"> 4. Nov. </p>
-					</div>
-				</div>
-				<div class="postTextWrapper">
-					<p class="postText">
-						Amazing how the haters and losers keep tweeting the name “F**kface Von Clownstick” like they are so original and like no one else is doing it...
-					</p>
-				</div>
-			</div>
-
-			<!-- =============================== Post 5 ======================================= -->
-			<div class="postWrapper">
-				<div class="postHeadWrapper">
-					<div class="postNameImageWrapper">
-						<div class="profileImage">
-							<img th:src="@{/images/profileImage.jpg}" class="profileImage"/>
-						</div>
-						<div class="postNameWrapper">
-							<div>
-								<p class="postFullName"> Donald Trump </p>
-							</div>
-							<div>
-								<p class="postTagName"> @realDonaldTrump </p>
-							</div>
-						</div>
-					</div>
-					<div class="postTimeTag">
-						<p class="postTagName"> 3. Nov. </p>
-					</div>
-				</div>
-				<div class="postTextWrapper">
-					<p class="postText">
-						Terrible! Just found out that Obama had my "wires tapped" in Trump Tower just before the victory. Nothing found. This is McCarthyism!
-					</p>
-				</div>
-			</div>
-
-			<!-- =============================== Post 6 ======================================= -->
-			<div class="postWrapper">
-				<div class="postHeadWrapper">
-					<div class="postNameImageWrapper">
-						<div class="profileImage">
-							<img th:src="@{/images/profileImage.jpg}" class="profileImage"/>
-						</div>
-						<div class="postNameWrapper">
-							<div>
-								<p class="postFullName"> Donald Trump </p>
-							</div>
-							<div>
-								<p class="postTagName"> @realDonaldTrump </p>
-							</div>
-						</div>
-					</div>
-					<div class="postTimeTag">
-						<p class="postTagName"> 3. Nov </p>
-					</div>
-				</div>
-				<div class="postTextWrapper">
-					<p class="postText">
-						I promise to rebuild our military and secure our border. Democrats want to shut down the government. Politics!
-					</p>
-				</div>
-			</div>
+			</th:block>
 
 		</div>
 

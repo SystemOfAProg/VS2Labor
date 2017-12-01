@@ -164,7 +164,7 @@ div.searchbarLayoutPlaceholder{
 	width: 50px;
 }
 
-button.searchButton {
+.searchButton {
 	height: 36px;
 	outline: none;
 	border: none;
@@ -173,6 +173,6 @@ button.searchButton {
 	color: white;
 }
 
-button.searchButton:hover {
+.searchButton:hover {
 	background-color: #FB8C00;
 }
