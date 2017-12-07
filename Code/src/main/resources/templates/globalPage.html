@@ -24,6 +24,7 @@
 			<link th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
 			rel="stylesheet" media="screen" />
 		<script type="text/javascript" th:src="@{/js/layout.js}"></script>
+		<script type="text/javascript" th:src="@{/js/searchResultHandler.js}"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script th:src="@{/webjars/bootstrap/3.3.4/js/bootstrap.min.js}"></script>
 	</head>
@@ -58,8 +59,8 @@
 				</div>
 				<div id="searchbar" class="searchBar">
 					<div class="searchbarInputWrapper">
-						<input type="text" placeholder="Suchen" class="searchInputField"> </input>
-						<button class="searchButton" data-toggle="modal" data-target="#searchResults"> Suchen </button>
+						<input id="searchFieldInput" type="text" placeholder="Suchen" class="searchInputField"/>
+						<input type="submit" value="Suchen" th:onclick="${'searchForUsersNonProfile()'}" class="searchButton" data-toggle="modal" data-target="#searchResults"/>
 					</div>
 					<div class="button2">
 						<button class="toggleSearch" th:onclick="${'closeSearchBar()'}" > <i class="material-icons button-icon">close</i> </button>
@@ -152,53 +153,8 @@
 		        <h4 class="dialogTitle">Nutzer</h4>
 		        <button type="button" class="dialogCloseButton" data-dismiss="modal"><i class="material-icons button-icon">close</i></button>
 		      </div>
-		      <div class="dialogListBody">
-
-		        <div class="userListElement">
-					<div class="listProfileImage">
-						<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
-					</div>
-					<div class="listTextWrapper">
-						<p class="listFullName"> Donald Trump </p>
-					</div>
-					<div class="listTextWrapper">
-						<p class="listTagName"> @realDonaldTrump </p>
-					</div>
-					<div class="listTextWrapper">
-						<i class="material-icons">keyboard_arrow_right</i>
-					</div>
-				</div>
-
-				<div class="userListElement">
-					<div class="listProfileImage">
-						<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
-					</div>
-					<div class="listTextWrapper">
-						<p class="listFullName"> Donald Trump </p>
-					</div>
-					<div class="listTextWrapper">
-						<p class="listTagName"> @realDonaldTrump </p>
-					</div>
-					<div class="listTextWrapper">
-						<i class="material-icons">keyboard_arrow_right</i>
-					</div>
-				</div>
-
-				<div class="userListElement">
-					<div class="listProfileImage">
-						<img th:src="@{/images/profileImage.jpg}" class="listProfileImage"/>
-					</div>
-					<div class="listTextWrapper">
-						<p class="listFullName"> Donald Trump </p>
-					</div>
-					<div class="listTextWrapper">
-						<p class="listTagName"> @realDonaldTrump </p>
-					</div>
-					<div class="listTextWrapper">
-						<i class="material-icons">keyboard_arrow_right</i>
-					</div>
-				</div>
-
+		      <div id="searchResultDialogBody" class="dialogListBody">
+				<!-- Search-Results will be below -->
 		      </div>
 		    </div>
 
