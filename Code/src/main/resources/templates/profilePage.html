@@ -24,6 +24,8 @@
 			rel="stylesheet" media="screen" />
 		<script type="text/javascript" th:src="@{/js/layout.js}"></script>
 		<script type="text/javascript" th:src="@{/js/searchResultHandler.js}"></script>
+		<script type="text/javascript" th:src="@{/js/postHandler.js}"></script>
+		<script type="text/javascript" th:src="@{/js/authenticationHandler.js}"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script th:src="@{/webjars/bootstrap/3.3.4/js/bootstrap.min.js}"></script>
 	</head>
@@ -68,12 +70,6 @@
 			</div>
 		</div>
 
-		<!-- Trigger the modal with a button -->
-		<div class="loginWrapper">
-			<button type="button" class="footer-button" data-toggle="modal" data-target="#login"> Registrieren 	</button>
-			<button type="button" class="footer-button" data-toggle="modal" data-target="#login"> Login 		</button>
-		</div>
-
 		<div id="contentwrapper" class="profilePageContentWrapper">
 			<div class="profilePageUserInfo">
 				<div class="profilePagePersonalInformation">
@@ -105,10 +101,10 @@
 				<div class="newPostWrapper">
 					<div class="newPostContainer">
 						<form class="fakeNews">
-							<textarea placeholder="Covfefe..." class="fakeNewsInput" maxlength="146"></textarea>
+							<textarea id="postInputArea" placeholder="Covfefe..." class="fakeNewsInput" maxlength="146"></textarea>
 							<div class="newPostSendButtonWrapper">
 								<p>0/146</p>
-								<button class="trumpit"> Trump that </button>
+								<button class="trumpit" th:onclick="'trumpIt(&quot;' + ${page.user.name} + '&quot;)'"> Trump that </button>
 							</div>
 						</form>
 					</div>
@@ -148,39 +144,6 @@
 
 				</div>
 			</div>
-		</div>
-
-
-		<!-- =============================== Login-Dialog ======================================= -->
-
-		<div id="login" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-
-		    <!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="dialogHeader">
-		        <h4 class="dialogTitle">Login</h4>
-		        <button type="button" class="dialogCloseButton" data-dismiss="modal"><i class="material-icons button-icon">close</i></button>
-		      </div>
-		      <div class="dialogBody">
-		        <form class="inputForm">
-		        	<div class="loginFormLineWrapper">
-				  		<i class="material-icons button-icon login-icon">account_circle</i>
-				  		<input class="inputField" placeholder="Benutzername" type="text" name="username"/>
-		        	</div>
-		        	<div class="loginFormLineWrapper">
-						<i class="material-icons button-icon login-icon">lock</i>
-						<input class="inputField" placeholder="Passwort" type="password" name="psw"/>
-		        	</div>
-				</form>
-		      </div>
-		      <div class="dialogFooter">
-		        <button type="button" class="cancelButton" data-dismiss="modal">Abbrechen</button>
-		        <button type="button" class="okButton" data-dismiss="modal">Anmelden</button>
-		      </div>
-		    </div>
-
-		  </div>
 		</div>
 
 		<!-- =============================== Search-Results ======================================= -->

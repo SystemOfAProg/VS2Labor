@@ -12,6 +12,8 @@ public interface IRedisService {
 	
 	public Optional<Object> authenticate(String username, char[]pass);
 	
+	public Optional<Object> register(String username, char[]pass);
+	
 	// ==========================================================================================
     // 										TweetCollection
     // ==========================================================================================
@@ -31,5 +33,11 @@ public interface IRedisService {
     public Optional<Object> searchForUsersByExpression(String expression);
     
     public Optional<Object> getFollowersOfUsers(User user);
+
+    // ==========================================================================================
+    // 										  	Post
+    // ==========================================================================================
+    
+	public Optional<Object> post(String username, String message);
 	
 }

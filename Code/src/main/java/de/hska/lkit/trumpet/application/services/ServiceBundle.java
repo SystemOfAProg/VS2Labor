@@ -36,6 +36,19 @@ public class ServiceBundle {
     	return user;
     }
     
+    /**
+     * Registers an user with an given password and username.
+     * @param username Username
+     * @param password Password
+     * @return User if no user with this name is not existing already
+     */
+    public Optional<User> registerUser(String username, char[] password) {
+    	Optional<User> user = this.redis.register(username, password).map(response -> {
+    		return this.transformResponseToUser(response);
+    	});
+    	return user;
+    }
+    
     // ==========================================================================================
     // 										TweetCollection
     // ==========================================================================================
@@ -128,6 +141,19 @@ public class ServiceBundle {
     		return this.transformResponseToUserList(response);
     	});
     	return tweets;
+    }
+    
+    // ==========================================================================================
+    // 										Post
+    // ==========================================================================================
+    
+    /**
+     * Returns User-Object by searching for it with a given username. Search is Case-Sensitive!
+     * @param username Case-Sensitive username to search for
+     * @return User-Object representing the user with the given username.
+     */
+    public void post(String username, String message) {
+    	this.redis.post(username, message);
     }
      
     // ==========================================================================================
