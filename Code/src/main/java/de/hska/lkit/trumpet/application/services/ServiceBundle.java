@@ -15,7 +15,6 @@ public class ServiceBundle {
 	private IRedisService redis;
 	
     public ServiceBundle() {
-    	// TODO: Change MockRedisService to functioning Class implementing IRedisService
     	this.redis = new MockRedisService();
     }
     
@@ -143,6 +142,19 @@ public class ServiceBundle {
     	return tweets;
     }
     
+    /**
+     * Unfollow an User.
+     * @param currentUser User that follows.
+     * @param userToFollow User that gets followed by <b> currentUser </b>
+     */
+    public void follow(String currentUser, String userToFollow) {
+		//this.redis.follow(currentUser, userToFollow);
+	}
+    
+    public void unfollow(String currentUser, String userToFollow) {
+    	//this.redis.follow(currentUser, userToFollow);
+	}
+    
     // ==========================================================================================
     // 										Post
     // ==========================================================================================
@@ -162,7 +174,7 @@ public class ServiceBundle {
     
     private User transformResponseToUser(Object user) {
     	// TODO: Handle implement transformResponseToUser()
-    	System.out.println("Transform redis-response to User: " + user.toString());
+    	log("Transform redis-response to User: " + user.toString());
     	String name = user.toString().replaceAll("getUserByUsername: ", "");
     	char[] pw = ("MansNotOrange").toCharArray();
     	return new User(name, pw);
@@ -170,7 +182,7 @@ public class ServiceBundle {
     
     private List<Tweet> transformResponseToTweetList(Object tweetList) {
     	// TODO: Handle implement transformResponseToTweetList()
-    	System.out.println(tweetList.toString());
+    	log(tweetList.toString());
     	List<Tweet> tweets = new ArrayList<>();
     	for(int i=0; i<10; i++) {
     		String message = "Covfefe!";
@@ -184,7 +196,7 @@ public class ServiceBundle {
     
     private List<User> transformResponseToUserList(Object userList) {
     	// TODO: Handle implement transformResponseToTweetList()
-    	System.out.println(userList.toString());
+    	log(userList.toString());
     	List<User> users = new ArrayList<>();
     	for(int i=0; i<10; i++) {
     		User user = new User("Donald Trump " + (i+1) , ("MansNotOrange").toCharArray());
@@ -192,5 +204,13 @@ public class ServiceBundle {
     	}
     	return users;
     }
+    
+    // ==========================================================================================
+    // 									Utils
+    // ==========================================================================================
+    
+    private void log(String debuginfo) {
+		System.out.println("[Service-Bundle]: " + debuginfo);
+	}
     
 }

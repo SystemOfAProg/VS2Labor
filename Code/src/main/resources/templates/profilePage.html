@@ -25,6 +25,7 @@
 		<script type="text/javascript" th:src="@{/js/layout.js}"></script>
 		<script type="text/javascript" th:src="@{/js/searchResultHandler.js}"></script>
 		<script type="text/javascript" th:src="@{/js/postHandler.js}"></script>
+		<script type="text/javascript" th:src="@{/js/followHandler.js}"></script>
 		<script type="text/javascript" th:src="@{/js/authenticationHandler.js}"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script th:src="@{/webjars/bootstrap/3.3.4/js/bootstrap.min.js}"></script>
@@ -34,7 +35,8 @@
 
 		<script>
 			$( document ).ready(function() {
-				main();
+				layoutMain();
+				toggleFollowButton();
 			});
 		</script>
 
@@ -83,16 +85,18 @@
 					<div class="profilePageFollowerInfo">
 						<div class="profilePageFollowerWrapper" data-toggle="modal" data-target="#followersList">
 							<p class="profilePageFollowerHeadline"> Followers </p>
-
-							<!-- ==================== Follower-Count ====================-->
 							<p th:text="${page.user.followerCount}" class="profilePageFollowerValue"> </p>
 						</div>
 						<div class="profilePageFollowerWrapper" data-toggle="modal" data-target="#subscriptionsList">
 							<p class="profilePageFollowerHeadline"> Following </p>
-
-							<!-- ==================== Subscriptions-Count ====================-->
 							<p th:text="${page.user.subscriptionsCount}" class="profilePageFollowerValue"> </p>
 						</div>
+					</div>
+					<div id="followArea" class="profilePageFollowerInfo">
+						<button class="followButton" th:onclick="'follow(  &quot; ' + ${page.user.name} + ' &quot; )'"> Follow </button>
+					</div>
+					<div id="unfollowArea" class="profilePageFollowerInfo">
+						<button class="followButton" th:onclick="'unfollow(  &quot; ' + ${page.user.name} + ' &quot; )'"> Unfollow </button>
 					</div>
 				</div>
 			</div>
@@ -103,7 +107,7 @@
 						<form class="fakeNews">
 							<textarea id="postInputArea" placeholder="Covfefe..." class="fakeNewsInput" maxlength="146"></textarea>
 							<div class="newPostSendButtonWrapper">
-								<p>0/146</p>
+								<p>max. 146</p>
 								<button class="trumpit" th:onclick="'trumpIt(&quot;' + ${page.user.name} + '&quot;)'"> Trump that </button>
 							</div>
 						</form>

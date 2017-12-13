@@ -1,6 +1,7 @@
 package de.hska.lkit.trumpet.application.pages;
 
 import de.hska.lkit.trumpet.application.services.*;
+import groovyjarjarantlr.debug.DebuggingInputBuffer;
 
 import java.util.List;
 
@@ -25,9 +26,13 @@ public class PersonalPage {
 
 	private void updateTweetList() {
 		this.service.getPersonalTweets(this.user).ifPresent( tweets -> {
-			System.out.println("[Global-Page-Info]: There were found " + tweets.size() + " Tweets on the global list.");
+			log("There were found " + tweets.size() + " Tweets on the global list.");
 			this.personalTweets = tweets;
 		});
+	}
+	
+	private void log(String debuginfo) {
+		System.out.println("[Global-Page]: " + debuginfo);
 	}
 	
 }

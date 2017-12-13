@@ -1,24 +1,28 @@
 function trumpIt(username) {
 	event.preventDefault();
-	console.log("Post-Button pressed");
 	var postContent = $('#postInputArea').val();
-	if(postContent){
-		var requestURL = "http://localhost:8080/trumpIt?username=" + escape(username) + "&message=" + escape(postContent);
-		console.log(requestURL);
+	if(postContent && (postContent.length > 0)){
+		var requestURL = "http://localhost:8080/trumpIt";
+		var requestBody = JSON.stringify({ "username": username, "message": postContent });
 		$.ajax({
 	        type: 'POST',
 	        url: requestURL,
-	        data: { get_param: 'value' },
-	        success: function (data) {
-	        	handlePost(data);
-	        }
+	        contentType: 'application/json',
+	        data: requestBody,
+		    dataType: 'json',
+	        success: function () {
+	        	handlePost();
+	        },
+	        error: function(){
+	        	// Lands in here even with status-code 200 !
+	        	handlePost();
+		    }
 	    });
 	} else {
-		console.warn("Value of Searchfield could not be read.");
+		alert("The Post could not be posted. Please enter a valid message.");
 	}
 }
 
-function handlePost(data) {
-	console.log(data);
+function handlePost() {
 	location.reload();
 }

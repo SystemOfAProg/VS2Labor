@@ -1,4 +1,4 @@
-function main() {
+function layoutMain() {
 	$('#searchbar').hide();
 	$('#logoSmall').hide();
 	window.onscroll = handleTitleBarPosition;

@@ -17,9 +17,13 @@ public class GlobalPage {
 
 	private void updateTweetList() {
 		this.service.getGlobalTweets().ifPresent( tweets -> {
-			System.out.println("[Global-Page-Info]: There were found " + tweets.size() + " Tweets on the global list.");
+			log("There were found " + tweets.size() + " Tweets on the global list.");
 			this.globalTweets = tweets;
 		});
+	}
+	
+	private void log(String debuginfo) {
+		System.out.println("[Global-Page]: " + debuginfo);
 	}
 
 }

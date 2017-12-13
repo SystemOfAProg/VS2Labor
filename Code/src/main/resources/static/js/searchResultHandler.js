@@ -1,18 +1,29 @@
+// =======================================================================================
+// For Profile-Page Use
+// =======================================================================================
+
 function searchForUsersProfile() {
 	var searchExpression = $('#searchFieldInput').val();
-	if(searchExpression){
-		var requestURL = 'http://localhost:8080/searchUser?expression=' + escape(searchExpression);
-		console.log(requestURL);
-		$.ajax({ 
-	        type: 'GET', 
-	        url: requestURL, 
-	        data: { get_param: 'value' }, 
-	        success: function (data) { 
+	if(searchExpression && (searchExpression.length != 0)){
+		var requestURL = 'http://localhost:8080/searchUser';
+		var requestBody = JSON.stringify({ "expression": searchExpression });
+		$.ajax({
+	        type: 'POST',
+	        url: requestURL,
+	        contentType: 'application/json',
+	        data: requestBody,
+		    dataType: 'json',
+	        success: function (data) {
 	        	addResponseToTemplateProfile(data);
-	        }
+	        },
+	        error: function(){
+		        console.error("An error happened on the server-site");
+		    }
 	    });
 	} else {
-		console.warn("Value of Searchfield could not be read.");
+		// Don't show any results when the Search-Expression is empty.
+		var searchResultBody = $('#searchResultDialogBody');
+		searchResultBody.html("");
 	}
 }
 
@@ -55,21 +66,32 @@ function buildTemplateFromProfile(name, tagname) {
 	return template;
 }
 
+// =======================================================================================
+// For non Profile-Page use -> Redirect is different and i am too lazy to parameterize it
+// =======================================================================================
+
 function searchForUsersNonProfile() {
 	var searchExpression = $('#searchFieldInput').val();
-	if(searchExpression){
-		var requestURL = 'http://localhost:8080/searchUser?expression=' + escape(searchExpression);
-		console.log(requestURL);
-		$.ajax({ 
-	        type: 'GET', 
-	        url: requestURL, 
-	        data: { get_param: 'value' }, 
-	        success: function (data) { 
+	if(searchExpression && (searchExpression.length != 0)){
+		var requestURL = 'http://localhost:8080/searchUser';
+		var requestBody = JSON.stringify({ "expression": searchExpression });
+		$.ajax({
+	        type: 'POST',
+	        url: requestURL,
+	        contentType: 'application/json',
+	        data: requestBody,
+		    dataType: 'json',
+	        success: function (data) {
 	        	addResponseToTemplateNonProfile(data);
-	        }
+	        },
+	        error: function(){
+		        console.error("An error happened on the server-site");
+		    }
 	    });
 	} else {
-		console.warn("Value of Searchfield could not be read.");
+		// Don't show any results when the Search-Expression is empty.
+		var searchResultBody = $('#searchResultDialogBody');
+		searchResultBody.html("");
 	}
 }
 

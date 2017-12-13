@@ -4,18 +4,23 @@ function login(username, password) {
 	var username = $('#login-username-field').val();
 	var password = $('#login-password-field').val();
 	if(username && password){
-	var requestURL = "http://localhost:8080/login?username=" + escape(username) + "&password=" + escape(password);
-		console.log(requestURL);
+		var requestURL = "http://localhost:8080/login";
+		var requestBody = JSON.stringify({ "username": username, "password": password });
 		$.ajax({
 	        type: 'POST',
 	        url: requestURL,
-	        data: { get_param: 'value' },
+	        contentType: 'application/json',
+	        data: requestBody,
+		    dataType: 'json',
 	        success: function (data) {
 	        	handleLogin(data);
-	        }
+	        },
+	        error: function(){
+		        console.error("Login with credentials",username,",",password,"failed.");
+		    }
 	    });
 	} else {
-		console.warn("Login failed");
+		console.error("Login failed. Please enter valid credentials.");
 	}
 }
 
@@ -25,18 +30,24 @@ function register(username, password) {
 	var username = $('#register-username-field').val();
 	var password = $('#register-password-field').val();
 	if(username && password){
-	var requestURL = "http://localhost:8080/register?username=" + escape(username) + "&password=" + escape(password);
+		var requestURL = "http://localhost:8080/register";
+		var requestBody = JSON.stringify({ "username": username, "password": password });
 		console.log(requestURL);
 		$.ajax({
 	        type: 'POST',
 	        url: requestURL,
-	        data: { get_param: 'value' },
+	        contentType: 'application/json',
+	        data: requestBody,
+		    dataType: 'json',
 	        success: function (data) {
 	        	handleLogin(data);
-	        }
+	        },
+	        error: function(){
+		        console.error("Registration with credentials",username,",",password,"failed.");
+		    }
 	    });
 	} else {
-		console.warn("Registration failed");
+		console.warn("Registration failed. Please enter valid credentials.");
 	}
 }
 

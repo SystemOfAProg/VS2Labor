@@ -20,8 +20,12 @@ public class SubscriptionPage {
 		// TODO: get user information from session
 		User user = new User("Iwanka Trump", ("MyHusbandIsACarrot").toCharArray());
 		this.service.getSubscriptionTweets(user).ifPresent( tweets -> {
-			System.out.println("[Subscription-Page-Info]: There were found " + tweets.size() + " Tweets on the global list.");
+			log("There were found " + tweets.size() + " Tweets on the global list.");
 			this.subscriptionTweets = tweets;
 		});
-	}  
+	} 
+	
+	private void log(String debuginfo) {
+		System.out.println("[Subscription-Page]: " + debuginfo);
+	}
 }
