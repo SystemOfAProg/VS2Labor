@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class RedisRepository {
-	@Autowired
+	@Autowired 
 	private StringRedisTemplate template;
 
 	public boolean auth(String uname, String pass) {

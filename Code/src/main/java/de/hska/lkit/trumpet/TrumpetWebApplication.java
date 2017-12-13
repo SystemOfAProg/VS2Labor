@@ -1,4 +1,4 @@
-package de.hska.lkit.trumpet.application;
+package de.hska.lkit.trumpet;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

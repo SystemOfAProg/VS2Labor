@@ -7,14 +7,18 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.ObjectUtils;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class SimpleCookieInterceptor extends HandlerInterceptorAdapter {
+
+public class SimpleCookieInterceptor implements HandlerInterceptor {
 	@Autowired
 	private StringRedisTemplate template;
 
 	@Override
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object handler) throws Exception {
+		System.out.println("intercepted");
 		Cookie[] cookies = req.getCookies();
 		if (!ObjectUtils.isEmpty(cookies))
 			for (Cookie cookie : cookies)
@@ -31,4 +35,18 @@ public class SimpleCookieInterceptor extends HandlerInterceptorAdapter {
 		return true;
 	}
 	// clean up SimpleSession State in the end (skipped here)
+
+	@Override
+	public void afterCompletion(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, Exception arg3)
+			throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void postHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, ModelAndView arg3)
+			throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 }

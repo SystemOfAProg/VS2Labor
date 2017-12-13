@@ -16,5 +16,6 @@ public class GlobalPageController {
 		model.addAttribute("page", page != null ? page : new GlobalPage());
 		return "globalPage";
 	}
+	//Todo:: Attribut das später das Template weiß das bei Anmeldung + Registrierung  das Popupfenster nicht mehr erscheint.
 	
 }
