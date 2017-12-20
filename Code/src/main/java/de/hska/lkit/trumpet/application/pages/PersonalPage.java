@@ -8,7 +8,7 @@ import java.util.List;
 import de.hska.lkit.trumpet.application.model.*;
 
 public class PersonalPage {
-   
+
 	ServiceBundle service;
 	public List<Tweet> personalTweets;
 	public List<User> searchResult;
@@ -25,14 +25,14 @@ public class PersonalPage {
 	}
 
 	private void updateTweetList() {
-		this.service.getPersonalTweets(this.user).ifPresent( tweets -> {
-			log("There were found " + tweets.size() + " Tweets on the global list.");
+		this.service.getPersonalTweets(this.user).ifPresent(tweets -> {
+			log("There were found " + tweets.size() + " Tweets on the personal list.");
 			this.personalTweets = tweets;
 		});
 	}
-	
+
 	private void log(String debuginfo) {
 		System.out.println("[Global-Page]: " + debuginfo);
 	}
-	
+
 }

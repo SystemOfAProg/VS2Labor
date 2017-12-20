@@ -16,5 +16,5 @@ public class SubscriptionPageController {
 		model.addAttribute("page", page != null ? page : new SubscriptionPage());
 		return "subscriptionsPage";
 	}
-	
+
 }

@@ -18,13 +18,13 @@ public class SubscriptionPage {
 
 	private void updateTweetList() {
 		// TODO: get user information from session
-		User user = new User("Iwanka Trump", ("MyHusbandIsACarrot").toCharArray());
-		this.service.getSubscriptionTweets(user).ifPresent( tweets -> {
-			log("There were found " + tweets.size() + " Tweets on the global list.");
+		User user = new User("Donald Trump", null);
+		this.service.getSubscriptionTweets(user).ifPresent(tweets -> {
+			log("There were found " + tweets.size() + " Tweets on the subscription list.");
 			this.subscriptionTweets = tweets;
 		});
-	} 
-	
+	}
+
 	private void log(String debuginfo) {
 		System.out.println("[Subscription-Page]: " + debuginfo);
 	}

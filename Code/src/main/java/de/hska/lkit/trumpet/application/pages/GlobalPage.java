@@ -6,7 +6,7 @@ import de.hska.lkit.trumpet.application.services.*;
 import de.hska.lkit.trumpet.application.model.*;
 
 public class GlobalPage {
-	
+
 	ServiceBundle service;
 	public List<Tweet> globalTweets;
 
@@ -16,12 +16,12 @@ public class GlobalPage {
 	}
 
 	private void updateTweetList() {
-		this.service.getGlobalTweets().ifPresent( tweets -> {
+		this.service.getGlobalTweets().ifPresent(tweets -> {
 			log("There were found " + tweets.size() + " Tweets on the global list.");
 			this.globalTweets = tweets;
 		});
 	}
-	
+
 	private void log(String debuginfo) {
 		System.out.println("[Global-Page]: " + debuginfo);
 	}

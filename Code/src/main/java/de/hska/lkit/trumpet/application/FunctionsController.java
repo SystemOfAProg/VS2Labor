@@ -23,127 +23,140 @@ import de.hska.lkit.trumpet.application.services.ServiceBundle;
 
 @RestController
 public class FunctionsController {
-	
+
 	/**
-	 * Searches for a list of users with an regular expression.
-	 * Returns an empty list when no user matches the expression
-	 * @param expression Regular Expression
+	 * Searches for a list of users with an regular expression. Returns an empty
+	 * list when no user matches the expression
+	 * 
+	 * @param expression
+	 *            Regular Expression
 	 * @return List of Users
 	 */
 	@RequestMapping(value = "/searchUser", method = RequestMethod.POST)
-    public List<User> searchForUsers(@RequestBody UserSearchRequestBody body) {
+	public List<User> searchForUsers(@RequestBody UserSearchRequestBody body) {
 		String expression = body.expression;
 		log("Search over REST-Controller for User with expression '" + expression + "'.");
-    	ServiceBundle service = new ServiceBundle();
-    	List<User> users = new ArrayList<>();
-    	service.searchForUsersByExpression(expression).ifPresent(list -> {
-    		users.addAll(list);
-    	});
-        return users;
-    }
-	
+		ServiceBundle service = new ServiceBundle();
+		List<User> users = new ArrayList<>();
+		service.searchForUsersByExpression(expression).ifPresent(list -> {
+			users.addAll(list);
+		});
+		return users;
+	}
+
 	/**
-	 * Authenticates an user with an given user and password.
-	 * Returns Unauthorized, when username or password is not correct.
-	 * @param username Username
-	 * @param password Password
+	 * Authenticates an user with an given user and password. Returns Unauthorized,
+	 * when username or password is not correct.
+	 * 
+	 * @param username
+	 *            Username
+	 * @param password
+	 *            Password
 	 * @return User and Password or Unauthorized
 	 */
-	@RequestMapping(value = "/login" , method = RequestMethod.POST)
-    public Object login(@RequestBody AuthenticationRequestBody body) {
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public Object login(@RequestBody AuthenticationRequestBody body) {
 		String username = body.username;
 		char[] password = body.password.toCharArray();
 		log("Login (username:'" + username + "', password:'" + String.valueOf(password) + "')");
-    	ServiceBundle service = new ServiceBundle();
-    	Optional<User> userOpt= service.loginUser(username, password);
-    	if(userOpt.isPresent()) {
-    		return userOpt.get();
-    	} else {
-    		return new ResponseEntity<String>("Your credentials were not correct. Please try it again.", HttpStatus.UNAUTHORIZED);
-    	}
-    }
-	
+		ServiceBundle service = new ServiceBundle();
+		Optional<User> userOpt = service.loginUser(username, password);
+		if (userOpt.isPresent()) {
+			return userOpt.get();
+		} else {
+			return new ResponseEntity<String>("Your credentials were not correct. Please try it again.",
+					HttpStatus.UNAUTHORIZED);
+		}
+	}
+
 	/**
-	 * Authenticates an user with an given user and password.
-	 * Returns Unauthorized, when username or password is not correct.
-	 * @param username Unique Username that is supposed to be set
-	 * @param password Password that is supposed to be set
+	 * Authenticates an user with an given user and password. Returns Unauthorized,
+	 * when username or password is not correct.
+	 * 
+	 * @param username
+	 *            Unique Username that is supposed to be set
+	 * @param password
+	 *            Password that is supposed to be set
 	 * @return User and Password or Unauthorized
 	 */
-	@RequestMapping(value = "/register" , method = RequestMethod.POST)
-    public Object register(@RequestBody AuthenticationRequestBody body) {
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public Object register(@RequestBody AuthenticationRequestBody body) {
 		String username = body.username;
 		char[] password = body.password.toCharArray();
-		log("New User registration ( username:'" + username +"' , password: '" + String.valueOf(password) + "' )");
-    	ServiceBundle service = new ServiceBundle();
-    	Optional<User> userOpt= service.registerUser(username, password);
-    	if(userOpt.isPresent()) {
-    		return userOpt.get();
-    	} else {
-    		return new ResponseEntity<String>("The registration failed. Does there maybe exist an user with the same Name?", HttpStatus.CONFLICT);
-    	}
-    }
-	
+		log("New User registration ( username:'" + username + "' , password: '" + String.valueOf(password) + "' )");
+		ServiceBundle service = new ServiceBundle();
+		Optional<User> userOpt = service.registerUser(username, password);
+		if (userOpt.isPresent()) {
+			return userOpt.get();
+		} else {
+			return new ResponseEntity<String>(
+					"The registration failed. Does there maybe exist an user with the same Name?", HttpStatus.CONFLICT);
+		}
+	}
+
 	/**
 	 * Adds a new post to the posting list of the user with the given username.
+	 * 
 	 * @return 200 when OK, 409 when post could not be added
 	 */
-	@RequestMapping(value = "/trumpIt" , method = RequestMethod.POST)
-    public Object post(@RequestBody NewPostRequestBody body) {
+	@RequestMapping(value = "/trumpIt", method = RequestMethod.POST)
+	public Object post(@RequestBody NewPostRequestBody body) {
 		String message = body.message;
 		String username = body.username;
 		log("New Post has been added (content:'" + message + "', user:'" + username + "' )");
-    	ServiceBundle service = new ServiceBundle();
-    	try {
-    		service.post(username, message);    		
-    	} catch(Exception e) {
-    		return new ResponseEntity<String>("The Post could not be posted.", HttpStatus.CONFLICT);
-    	}
-    	return new ResponseEntity<String>("The Post has succesfully been added.", HttpStatus.OK);
-    }
-	
+		ServiceBundle service = new ServiceBundle();
+		try {
+			service.post(username, message);
+		} catch (Exception e) {
+			return new ResponseEntity<String>("The Post could not be posted.", HttpStatus.CONFLICT);
+		}
+		return new ResponseEntity<String>("The Post has succesfully been added.", HttpStatus.OK);
+	}
+
 	/**
-     * Follow an User.
-     * @return 200 when OK, 409 when post could not be added
-     */
-	@RequestMapping(value = "/follow" , method = RequestMethod.POST)
-    public Object follow(@RequestBody FollowRequestBody body) {
+	 * Follow an User.
+	 * 
+	 * @return 200 when OK, 409 when post could not be added
+	 */
+	@RequestMapping(value = "/follow", method = RequestMethod.POST)
+	public Object follow(@RequestBody FollowRequestBody body) {
 		String currentUser = body.currentUser;
 		String userToFollow = body.userToFollow;
-		log("User '" + userToFollow  + "' will be added to List of Followers of User '" + currentUser + "'.");
-    	ServiceBundle service = new ServiceBundle();
-    	try {
-    		service.follow(currentUser, userToFollow);
-    	} catch(Exception e) {
-    		String message = "The user " + currentUser + " could not follow " + userToFollow + ".";
-    		return new ResponseEntity<String>(message, HttpStatus.CONFLICT);
-    	}
-    	String message = "The user " + currentUser + " successfully follows " + userToFollow + ".";
-    	return new ResponseEntity<String>(message, HttpStatus.OK);
-    }
-	
+		log("User '" + userToFollow + "' will be added to List of Followers of User '" + currentUser + "'.");
+		ServiceBundle service = new ServiceBundle();
+		try {
+			service.follow(currentUser, userToFollow);
+		} catch (Exception e) {
+			String message = "The user " + currentUser + " could not follow " + userToFollow + ".";
+			return new ResponseEntity<String>(message, HttpStatus.CONFLICT);
+		}
+		String message = "The user " + currentUser + " successfully follows " + userToFollow + ".";
+		return new ResponseEntity<String>(message, HttpStatus.OK);
+	}
+
 	/**
 	 * Unfollow an User.
+	 * 
 	 * @return User and Password or Unauthorized
 	 */
-	@RequestMapping(value = "/unfollow" , method = RequestMethod.POST)
-    public Object unfollow(@RequestBody FollowRequestBody body) {
+	@RequestMapping(value = "/unfollow", method = RequestMethod.POST)
+	public Object unfollow(@RequestBody FollowRequestBody body) {
 		String currentUser = body.currentUser;
 		String userToFollow = body.userToFollow;
-		log("User '" + userToFollow  + "' will be removed from List of Followers of User '" + currentUser + "'.");
-    	ServiceBundle service = new ServiceBundle();
-    	try {
-    		service.unfollow(currentUser, userToFollow);
-    	} catch(Exception e) {
-    		String message = "The user " + currentUser + " could not unfollow " + userToFollow + ".";
-    		return new ResponseEntity<String>(message, HttpStatus.CONFLICT);
-    	}
-    	String message = "The user " + currentUser + " does not follow " + userToFollow + " anymore.";
-    	return new ResponseEntity<String>(message, HttpStatus.OK);
-    }
-	
+		log("User '" + userToFollow + "' will be removed from List of Followers of User '" + currentUser + "'.");
+		ServiceBundle service = new ServiceBundle();
+		try {
+			service.unfollow(currentUser, userToFollow);
+		} catch (Exception e) {
+			String message = "The user " + currentUser + " could not unfollow " + userToFollow + ".";
+			return new ResponseEntity<String>(message, HttpStatus.CONFLICT);
+		}
+		String message = "The user " + currentUser + " does not follow " + userToFollow + " anymore.";
+		return new ResponseEntity<String>(message, HttpStatus.OK);
+	}
+
 	private void log(String debuginfo) {
 		System.out.println("[Rest-Controller]: " + debuginfo);
 	}
-	
+
 }

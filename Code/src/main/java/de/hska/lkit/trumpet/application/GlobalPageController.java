@@ -16,5 +16,5 @@ public class GlobalPageController {
 		model.addAttribute("page", page != null ? page : new GlobalPage());
 		return "globalPage";
 	}
-	
+
 }

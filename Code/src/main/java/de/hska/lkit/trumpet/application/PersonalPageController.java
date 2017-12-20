@@ -16,10 +16,10 @@ public class PersonalPageController {
 		model.addAttribute("page", page);
 		return "profilePage";
 	}
-	
+
 	@ModelAttribute("personalPage")
 	public PersonalPage prepareModel(@PathVariable("userName") String name) {
-	    return new PersonalPage(name);
+		return new PersonalPage(name);
 	}
-	
+
 }

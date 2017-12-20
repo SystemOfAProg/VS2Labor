@@ -5,8 +5,8 @@ package de.hska.lkit.trumpet.application.model;
  * <b>currentUser</b> follows <b>userToFollow</b> .
  */
 public class FollowRequestBody {
-	
+
 	public String currentUser;
 	public String userToFollow;
-	
+
 }
