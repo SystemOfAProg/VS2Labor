@@ -3,15 +3,9 @@ package de.hska.lkit.trumpet.application.model;
 import java.util.Date;
 import java.util.Locale;
 
-import org.springframework.format.datetime.joda.LocalDateParser;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import de.hska.lkit.trumpet.application.services.*;
 
 public class Tweet {
 

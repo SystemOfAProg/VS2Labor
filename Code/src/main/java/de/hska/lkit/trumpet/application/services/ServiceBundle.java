@@ -1,7 +1,6 @@
 package de.hska.lkit.trumpet.application.services;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -270,7 +269,7 @@ public class ServiceBundle {
 				String keyUser = userList.get(i);
 				System.out.println("keyUser: " + keyUser);
 
-				String pw = jedis.hget(keyUser, "pw");
+				//String pw = jedis.hget(keyUser, "pw");
 				User user = new User(jedis.hget(keyUser, "name"), null);
 
 				users.add(user);
