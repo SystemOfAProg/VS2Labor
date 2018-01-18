@@ -14,7 +14,7 @@ public class TrumpetWebApplication {
 	static ApplicationContext ctx;
 	public static void main(String[] args) throws InterruptedException {
 		//SpringApplication.run(TrumpetWebApplication.class, args);
-		ctx = SpringApplication.run(Application.class, args);
+		ctx = SpringApplication.run(TrumpetWebApplication.class, args);
 //		StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class); 
 //		CountDownLatch latch = ctx.getBean(CountDownLatch.class); 
 //		template.convertAndSend("chat", "Hello from Redis!");

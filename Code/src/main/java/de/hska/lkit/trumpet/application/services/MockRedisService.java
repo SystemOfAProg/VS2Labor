@@ -281,10 +281,10 @@ public class MockRedisService implements IRedisService {
 				jedis.lpush(iter + ":follower:tweet", key);
 				System.out.println("name von dem Typen auf wesen liste man schreibt: " + iter);
 			}
-//			ApplicationContext ctx = TrumpetWebApplication.getCtx();
-//			StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class); 
-//			CountDownLatch latch = ctx.getBean(CountDownLatch.class); 
-//			template.convertAndSend("chat", "Hello from Redis!");
+			ApplicationContext ctx = TrumpetWebApplication.getCtx();
+			StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class); 
+			CountDownLatch latch = ctx.getBean(CountDownLatch.class); 
+			template.convertAndSend("chat", "Hello from Redis!");
 			
 		} catch (Exception e) {
 			System.out.println("Mock catch block post");
