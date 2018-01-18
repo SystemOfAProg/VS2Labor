@@ -1,21 +1,23 @@
+var newPostBody = "";
+
 function trumpIt(username) {
 	event.preventDefault();
 	var postContent = $('#postInputArea').val();
 	if(postContent && (postContent.length > 0)){
 		var requestURL = "http://localhost:8080/trumpIt";
-		var requestBody = JSON.stringify({ "username": username, "message": postContent });
+		newPostBody = JSON.stringify({ "username": username, "message": postContent });
 		$.ajax({
 	        type: 'POST',
 	        url: requestURL,
 	        contentType: 'application/json',
-	        data: requestBody,
+	        data: newPostBody,
 		    dataType: 'json',
 	        success: function () {
-	        	handlePost();
+	        	handlePost(newPostBody);
 	        },
 	        error: function(){
-	        	// Lands in here even with status-code 200 !
-	        	handlePost();
+	        	// -> Lands in here even with status-code 200 !
+	        	handlePost(newPostBody);
 		    }
 	    });
 	} else {
@@ -23,6 +25,7 @@ function trumpIt(username) {
 	}
 }
 
-function handlePost() {
-	location.reload();
+// Notify Websocket about new Tweet
+function handlePost(body) {
+	wsSendTweet(body);
 }

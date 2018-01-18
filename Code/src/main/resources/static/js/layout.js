@@ -2,6 +2,8 @@ function layoutMain() {
 	$('#searchbar').hide();
 	$('#logoSmall').hide();
 	window.onscroll = handleTitleBarPosition;
+	// Connect to Websocket
+	connect();
 }
 
 function openSearchBar() {
