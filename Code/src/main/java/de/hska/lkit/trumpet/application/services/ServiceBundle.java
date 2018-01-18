@@ -241,8 +241,8 @@ public class ServiceBundle {
 				tweet.setDate(jedis.hget(keyMessage, "date"));
 				tweet.setMessage(jedis.hget(keyMessage, "message"));
 				// die nächsten 3 Zeilen kann man löschen, vorerst drin gelassen.
-				String wertÜberprüfen = jedis.hget(keyMessage, "message");
-				System.out.println("was in der nachricht drin steht: " + wertÜberprüfen);
+				String wertUeberpruefen = jedis.hget(keyMessage, "message");
+				System.out.println("was in der nachricht drin steht: " + wertUeberpruefen);
 				System.out.println("was in der nachricht drin steht: " + tweet.getMessage());
 
 				User user = new User(jedis.hget(keyUser, "name"), null);
