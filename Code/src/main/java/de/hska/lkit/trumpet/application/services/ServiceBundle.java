@@ -220,11 +220,10 @@ public class ServiceBundle {
 	private List<Tweet> transformResponseToTweetList(List<String> tweetList) {
 		JedisPool jedisPool = JedisFactory.getPool();
 		try (Jedis jedis = jedisPool.getResource()) {
-			System.out.println("transformResponseToTweetList: die übergeben tweetliste: " + tweetList.toString());
+			System.out.println("transformResponseToTweetList: die Uebergeben tweetliste: " + tweetList.toString());
 
 			List<Tweet> tweets = new ArrayList<>();
 			for (int i = 0; i < tweetList.size(); i++) {
-				Tweet tweet = new Tweet(null, null, null, null);
 				String value = tweetList.get(i); // tagName + ":tweet:" + id
 				System.out.println("transform tweetlist value: " + value);
 
@@ -238,14 +237,15 @@ public class ServiceBundle {
 				String keyMessage = keyUser + ":tweet:" + id;
 				System.out.println("key von der nachricht: " + keyMessage);
 
-				tweet.setDate(jedis.hget(keyMessage, "date"));
-				tweet.setMessage(jedis.hget(keyMessage, "message"));
+				// tweet.setDate(jedis.hget(keyMessage, "date"));
+				// tweet.setMessage(jedis.hget(keyMessage, "message"));
 				// die naechsten 3 Zeilen kann man loeschen, vorerst drin gelassen.
 				String wertUeberpruefen = jedis.hget(keyMessage, "message");
 				System.out.println("was in der nachricht drin steht: " + wertUeberpruefen);
-				System.out.println("was in der nachricht drin steht: " + tweet.getMessage());
+				// System.out.println("was in der nachricht drin steht: " + tweet.getMessage());
 
 				User user = new User(jedis.hget(keyUser, "name"), null);
+				Tweet tweet = new Tweet(jedis.hget(keyMessage, "message"), jedis.hget(keyMessage, "date"), user, id);
 				tweet.setUser(user);
 
 				tweets.add(tweet);
@@ -269,7 +269,7 @@ public class ServiceBundle {
 				String keyUser = userList.get(i);
 				System.out.println("keyUser: " + keyUser);
 
-				//String pw = jedis.hget(keyUser, "pw");
+				// String pw = jedis.hget(keyUser, "pw");
 				User user = new User(jedis.hget(keyUser, "name"), null);
 
 				users.add(user);

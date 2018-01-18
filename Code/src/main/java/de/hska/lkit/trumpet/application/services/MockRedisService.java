@@ -267,7 +267,7 @@ public class MockRedisService implements IRedisService {
 			jedis.hset(key, "message", message);
 			Calendar cal = Calendar.getInstance();
 			java.util.Date time = cal.getTime();
-			DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+			DateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
 
 			jedis.hset(key, "date", formatter.format(time));
 
@@ -282,10 +282,10 @@ public class MockRedisService implements IRedisService {
 				System.out.println("name von dem Typen auf wesen liste man schreibt: " + iter);
 			}
 			ApplicationContext ctx = TrumpetWebApplication.getCtx();
-			StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class); 
-			CountDownLatch latch = ctx.getBean(CountDownLatch.class); 
+			StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class);
+			CountDownLatch latch = ctx.getBean(CountDownLatch.class);
 			template.convertAndSend("chat", "Neue Nachricht von: " + username);
-			
+
 		} catch (Exception e) {
 			System.out.println("Mock catch block post");
 			e.printStackTrace();
