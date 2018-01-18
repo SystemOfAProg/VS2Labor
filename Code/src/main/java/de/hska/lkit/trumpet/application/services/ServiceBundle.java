@@ -240,7 +240,7 @@ public class ServiceBundle {
 
 				tweet.setDate(jedis.hget(keyMessage, "date"));
 				tweet.setMessage(jedis.hget(keyMessage, "message"));
-				// die nächsten 3 Zeilen kann man löschen, vorerst drin gelassen.
+				// die naechsten 3 Zeilen kann man loeschen, vorerst drin gelassen.
 				String wertUeberpruefen = jedis.hget(keyMessage, "message");
 				System.out.println("was in der nachricht drin steht: " + wertUeberpruefen);
 				System.out.println("was in der nachricht drin steht: " + tweet.getMessage());
@@ -249,7 +249,7 @@ public class ServiceBundle {
 				tweet.setUser(user);
 
 				tweets.add(tweet);
-				System.out.println("größe der Liste: " + tweets.size());
+				System.out.println("groesse der Liste: " + tweets.size());
 			}
 			return tweets;
 		} catch (Exception e) {
@@ -263,7 +263,7 @@ public class ServiceBundle {
 
 		JedisPool jedisPool = JedisFactory.getPool();
 		try (Jedis jedis = jedisPool.getResource()) {
-			System.out.println("Die Übergebene userList" + userList.toString());
+			System.out.println("Die Uebergebene userList" + userList.toString());
 			List<User> users = new ArrayList<>();
 			for (int i = 0; i < userList.size(); i++) {
 				String keyUser = userList.get(i);

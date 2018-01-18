@@ -214,7 +214,7 @@ public class MockRedisService implements IRedisService {
 				System.out.println("Iterator: " + iter);
 				if (iter.length() >= expression.length() && iter.substring(0, expression.length()).equals(expression)) {
 					jedis.lpush("0", iter);
-					System.out.println("Suche hinzugefügt: " + iter);
+					System.out.println("Suche hinzugefuegt: " + iter);
 				}
 			}
 			return Optional.of(jedis.lrange("0", 0, 1));
@@ -284,7 +284,7 @@ public class MockRedisService implements IRedisService {
 			ApplicationContext ctx = TrumpetWebApplication.getCtx();
 			StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class); 
 			CountDownLatch latch = ctx.getBean(CountDownLatch.class); 
-			template.convertAndSend("chat", "Hello from Redis!");
+			template.convertAndSend("chat", "Neue Nachricht von: " + username);
 			
 		} catch (Exception e) {
 			System.out.println("Mock catch block post");
