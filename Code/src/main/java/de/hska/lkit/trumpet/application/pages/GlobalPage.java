@@ -1,6 +1,5 @@
 package de.hska.lkit.trumpet.application.pages;
 
-import java.util.ArrayList;
 import java.util.List;
 import de.hska.lkit.trumpet.application.services.*;
 import de.hska.lkit.trumpet.application.model.*;
