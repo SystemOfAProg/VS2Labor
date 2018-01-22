@@ -1,7 +1,6 @@
 package de.hska.lkit.trumpet.application.services;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -221,11 +220,10 @@ public class ServiceBundle {
 	private List<Tweet> transformResponseToTweetList(List<String> tweetList) {
 		JedisPool jedisPool = JedisFactory.getPool();
 		try (Jedis jedis = jedisPool.getResource()) {
-			System.out.println("transformResponseToTweetList: die übergeben tweetliste: " + tweetList.toString());
+			System.out.println("transformResponseToTweetList: die Uebergeben tweetliste: " + tweetList.toString());
 
 			List<Tweet> tweets = new ArrayList<>();
 			for (int i = 0; i < tweetList.size(); i++) {
-				Tweet tweet = new Tweet(null, null, null, null);
 				String value = tweetList.get(i); // tagName + ":tweet:" + id
 				System.out.println("transform tweetlist value: " + value);
 
@@ -239,18 +237,19 @@ public class ServiceBundle {
 				String keyMessage = keyUser + ":tweet:" + id;
 				System.out.println("key von der nachricht: " + keyMessage);
 
-				tweet.setDate(jedis.hget(keyMessage, "date"));
-				tweet.setMessage(jedis.hget(keyMessage, "message"));
-				// die nächsten 3 Zeilen kann man löschen, vorerst drin gelassen.
-				String wertÜberprüfen = jedis.hget(keyMessage, "message");
-				System.out.println("was in der nachricht drin steht: " + wertÜberprüfen);
-				System.out.println("was in der nachricht drin steht: " + tweet.getMessage());
+				// tweet.setDate(jedis.hget(keyMessage, "date"));
+				// tweet.setMessage(jedis.hget(keyMessage, "message"));
+				// die naechsten 3 Zeilen kann man loeschen, vorerst drin gelassen.
+				String wertUeberpruefen = jedis.hget(keyMessage, "message");
+				System.out.println("was in der nachricht drin steht: " + wertUeberpruefen);
+				// System.out.println("was in der nachricht drin steht: " + tweet.getMessage());
 
 				User user = new User(jedis.hget(keyUser, "name"), null);
+				Tweet tweet = new Tweet(jedis.hget(keyMessage, "message"), jedis.hget(keyMessage, "date"), user, id);
 				tweet.setUser(user);
 
 				tweets.add(tweet);
-				System.out.println("größe der Liste: " + tweets.size());
+				System.out.println("groesse der Liste: " + tweets.size());
 			}
 			return tweets;
 		} catch (Exception e) {
@@ -264,13 +263,13 @@ public class ServiceBundle {
 
 		JedisPool jedisPool = JedisFactory.getPool();
 		try (Jedis jedis = jedisPool.getResource()) {
-			System.out.println("Die Übergebene userList" + userList.toString());
+			System.out.println("Die Uebergebene userList" + userList.toString());
 			List<User> users = new ArrayList<>();
 			for (int i = 0; i < userList.size(); i++) {
 				String keyUser = userList.get(i);
 				System.out.println("keyUser: " + keyUser);
 
-				String pw = jedis.hget(keyUser, "pw");
+				// String pw = jedis.hget(keyUser, "pw");
 				User user = new User(jedis.hget(keyUser, "name"), null);
 
 				users.add(user);

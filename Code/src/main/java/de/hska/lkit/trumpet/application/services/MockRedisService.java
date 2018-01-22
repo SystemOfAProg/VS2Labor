@@ -1,30 +1,24 @@
 package de.hska.lkit.trumpet.application.services;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import de.hska.lkit.trumpet.application.JedisFactory;
+import de.hska.lkit.trumpet.application.TrumpetWebApplication;
 import de.hska.lkit.trumpet.application.model.*;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.CountDownLatch;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.RedisSerializer;
-
-import ch.qos.logback.core.net.SyslogOutputStream;
+import org.springframework.context.ApplicationContext;
+import org.springframework.data.redis.core.StringRedisTemplate;
 
 /* 	=============================================
  * 	TODO: Implement interface for redis-databse
@@ -220,7 +214,7 @@ public class MockRedisService implements IRedisService {
 				System.out.println("Iterator: " + iter);
 				if (iter.length() >= expression.length() && iter.substring(0, expression.length()).equals(expression)) {
 					jedis.lpush("0", iter);
-					System.out.println("Suche hinzugefügt: " + iter);
+					System.out.println("Suche hinzugefuegt: " + iter);
 				}
 			}
 			return Optional.of(jedis.lrange("0", 0, 1));
@@ -273,7 +267,7 @@ public class MockRedisService implements IRedisService {
 			jedis.hset(key, "message", message);
 			Calendar cal = Calendar.getInstance();
 			java.util.Date time = cal.getTime();
-			DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+			DateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
 
 			jedis.hset(key, "date", formatter.format(time));
 
@@ -287,6 +281,11 @@ public class MockRedisService implements IRedisService {
 				jedis.lpush(iter + ":follower:tweet", key);
 				System.out.println("name von dem Typen auf wesen liste man schreibt: " + iter);
 			}
+			ApplicationContext ctx = TrumpetWebApplication.getCtx();
+			StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class);
+			CountDownLatch latch = ctx.getBean(CountDownLatch.class);
+			template.convertAndSend("chat", "Neue Nachricht von: " + username);
+
 		} catch (Exception e) {
 			System.out.println("Mock catch block post");
 			e.printStackTrace();
