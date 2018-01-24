@@ -53,7 +53,7 @@
 					</div>
 					<img th:src="@{/images/logo.svg}" id="logoSmall" class="navigationLogo" />
 					<div class="buttonWrapperRight">
-						<a  th:href="@{/profile/Donald%20Trump}"> <button class="button" > Meine Seite   </button> </a>
+						<a  th:href="@{'/profile/'+${page.username}}"> <button class="button" > Meine Seite </button> </a>
 						<div class="button">
 							<button class="toggleSearch" th:onclick="${'openSearchBar()'}" > <i class="material-icons button-icon">search</i> </button>
 						</div>

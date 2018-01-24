@@ -4,15 +4,21 @@ function login(username, password) {
 	var username = $('#login-username-field').val();
 	var password = $('#login-password-field').val();
 	if(username && password){
-		var requestURL = "http://localhost:8080/login";
+//		var requestURL = "http://localhost:8080/api/login?username=" + username +"&password=" + password;
+		var requestURL = "http://localhost:8080/api/login";
 		var requestBody = JSON.stringify({ "username": username, "password": password });
+		
+//		$.post(requestURL,requestBody, function(){
+//			handleLogin();
+//		})
+		
 		$.ajax({
 	        type: 'POST',
 	        url: requestURL,
 	        contentType: 'application/json',
 	        data: requestBody,
 		    dataType: 'json',
-	        success: function (data) {
+	        success: function () {
 	        	handleLogin(data);
 	        },
 	        error: function(){
@@ -30,6 +36,7 @@ function register(username, password) {
 	var username = $('#register-username-field').val();
 	var password = $('#register-password-field').val();
 	if(username && password){
+//		var requestURL = "http://localhost:8080/register?username=" + username +"&password=" + password;
 		var requestURL = "http://localhost:8080/register";
 		var requestBody = JSON.stringify({ "username": username, "password": password });
 		console.log(requestURL);
@@ -52,5 +59,6 @@ function register(username, password) {
 }
 
 function handleLogin(data) {
+	location.reload();
 	console.log(data);
 }
