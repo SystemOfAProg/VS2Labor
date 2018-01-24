@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import de.hska.lkit.trumpet.application.model.AuthenticationRequestBody;
@@ -15,6 +17,7 @@ import de.hska.lkit.trumpet.application.model.FollowRequestBody;
 import de.hska.lkit.trumpet.application.model.NewPostRequestBody;
 import de.hska.lkit.trumpet.application.model.User;
 import de.hska.lkit.trumpet.application.model.UserSearchRequestBody;
+import de.hska.lkit.trumpet.application.security.SecurityConfig;
 import de.hska.lkit.trumpet.application.services.ServiceBundle;
 
 @RestController
@@ -50,10 +53,16 @@ public class FunctionsController {
 	 *            Password
 	 * @return User and Password or Unauthorized
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public Object login(@RequestBody AuthenticationRequestBody body) {
+//	@RequestMapping(value = "/api/login?username={username:\\w+}&password={username:\\w+}", method = RequestMethod.POST)
+	@RequestMapping(value = "/api/login", method = RequestMethod.POST)
+	public Object login(@RequestBody AuthenticationRequestBody body ) {
 		String username = body.username;
 		char[] password = body.password.toCharArray();
+
+//		SecurityConfig config = new SecurityConfig();
+//		config.setSessionUser(username, String.valueOf(password));
+//		System.out.println("SessionUser: " + config.getUsername());
+		
 		log("Login (username:'" + username + "', password:'" + String.valueOf(password) + "')");
 		ServiceBundle service = new ServiceBundle();
 		Optional<User> userOpt = service.loginUser(username, password);
@@ -128,6 +137,47 @@ public class FunctionsController {
 		}
 		String message = "The user " + currentUser + " successfully follows " + userToFollow + ".";
 		return new ResponseEntity<String>(message, HttpStatus.OK);
+	}
+	
+	/**
+	 * Is an user already follwing an other.
+	 * 
+	 * @return 200 when OK, 409 when post could not be added
+	 */
+	@RequestMapping(value = "/isFollowing", method = RequestMethod.POST)
+	public Object isFollowing(@RequestBody FollowRequestBody body) {
+		String followingUserName = body.currentUser.trim();
+		String userToFollowName = body.userToFollow.trim();
+		boolean userAlreadyFollowing = false;
+		log("Is User '" + userToFollowName + "' already following '" + followingUserName + "'.");
+		ServiceBundle service = new ServiceBundle();
+		try {
+			User followingUser = null;
+			User userToFollow;
+			Optional<User> followingUserOpt = service.getUserByUsername(followingUserName);
+			Optional<User> userToFollowOpt = service.getUserByUsername(userToFollowName);
+			if(followingUserOpt.isPresent()){
+				followingUser = followingUserOpt.get();
+			}
+			if(userToFollowOpt.isPresent()){
+				userToFollow = userToFollowOpt.get();
+			}
+			Optional<List<User>> followingsOpt = service.getFollowersOfUsers(followingUser);
+			if (followingsOpt.isPresent() ) {
+				List<User> followings = followingsOpt.get();
+				for (User user:followings) {
+					if(user.getName().equals(userToFollowName)) {
+						userAlreadyFollowing = true;
+					}
+				}
+			} else {
+				throw new IllegalStateException();
+			}
+		} catch (Exception e) {
+			String message = "An Error happened while looking up if user " + userToFollowName + " already follows " + followingUserName + ".";
+			return new ResponseEntity<String>(message, HttpStatus.CONFLICT);
+		};
+		return new ResponseEntity<String>(String.valueOf(userAlreadyFollowing), HttpStatus.OK);
 	}
 
 	/**

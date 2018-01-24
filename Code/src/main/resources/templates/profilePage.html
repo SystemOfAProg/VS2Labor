@@ -35,11 +35,13 @@
 	</head>
 	<!-- ======================================== BODY ======================================== -->
 	<body>
-
+		<!-- super hacky stuff -->
+		<p id="userToFollow" style="display: none"  th:text="${page.user.name}"></p>
+		<p id="currentUser" style="display: none"  th:text="${page.username}"></p>
 		<script>
 			$( document ).ready(function() {
 				layoutMain();
-				toggleFollowButton();
+				toggleFollowButton($('#userToFollow').text(), $('#currentUser').text());
 			});
 		</script>
 
@@ -96,10 +98,10 @@
 						</div>
 					</div>
 					<div id="followArea" class="profilePageFollowerInfo">
-						<button class="followButton" th:onclick="'follow(  &quot; ' + ${page.user.name} + ' &quot; )'"> Follow </button>
+						<button class="followButton" th:onclick="'follow( &quot;' + ${page.username} + '&quot; , &quot; ' + ${page.user.name} + ' &quot; )'"> Follow </button>
 					</div>
 					<div id="unfollowArea" class="profilePageFollowerInfo">
-						<button class="followButton" th:onclick="'unfollow(  &quot; ' + ${page.user.name} + ' &quot; )'"> Unfollow </button>
+						<button class="followButton" th:onclick="'unfollow( &quot;' + ${page.username} + '&quot; , &quot; ' + ${page.user.name} + ' &quot; )'"> Unfollow </button>
 					</div>
 				</div>
 			</div>

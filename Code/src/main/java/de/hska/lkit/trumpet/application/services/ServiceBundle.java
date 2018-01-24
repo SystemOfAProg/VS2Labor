@@ -6,7 +6,8 @@ import java.util.Optional;
 import java.util.Set;
 
 import de.hska.lkit.trumpet.application.JedisFactory;
-import de.hska.lkit.trumpet.application.model.*;
+import de.hska.lkit.trumpet.application.model.Tweet;
+import de.hska.lkit.trumpet.application.model.User;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
@@ -56,6 +57,7 @@ public class ServiceBundle {
 		Optional<User> user = this.redis.register(username, password).map(response -> {
 			return this.transformResponseToUser(response);
 		});
+		
 		return user;
 	}
 
@@ -118,10 +120,14 @@ public class ServiceBundle {
 	 * @return User-Object representing the user with the given username.
 	 */
 	public Optional<User> getUserByUsername(String username) throws IllegalArgumentException {
-		Optional<User> user = this.redis.getUserByUsername(username).map(response -> {
-			return this.transformResponseToUser(response);
-		});
-		return user;
+		if(username != null) {
+			Optional<User> user = this.redis.getUserByUsername(username).map(response -> {
+				return this.transformResponseToUser(response);
+			});	
+			return user;
+		} else {
+			return Optional.ofNullable(null);
+		}
 	}
 
 	/**

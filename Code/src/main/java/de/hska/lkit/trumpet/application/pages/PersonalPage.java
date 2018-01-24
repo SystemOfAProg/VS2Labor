@@ -4,11 +4,13 @@ import de.hska.lkit.trumpet.application.services.*;
 import java.util.List;
 
 import de.hska.lkit.trumpet.application.model.*;
+import de.hska.lkit.trumpet.application.security.SecurityUtils;
 
 public class PersonalPage {
 
 	ServiceBundle service;
 	public List<Tweet> personalTweets;
+	public String username = SecurityUtils.getUserName();
 	public List<User> searchResult;
 	public User user;
 
@@ -25,6 +27,7 @@ public class PersonalPage {
 	private void updateTweetList() {
 		this.service.getPersonalTweets(this.user).ifPresent(tweets -> {
 			log("There were found " + tweets.size() + " Tweets on the personal list.");
+			log("Current user: " + (SecurityUtils.getUserName() != null ? SecurityUtils.getUserName() : "-"));
 			this.personalTweets = tweets;
 		});
 	}
