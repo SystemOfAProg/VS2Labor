@@ -78,10 +78,12 @@ public class MockRedisService implements IRedisService {
 		try (Jedis jedis = jedisPool.getResource()) {
 			String key = username;
 			jedis.hset(key, "name", username);
-			jedis.hset(key, "pw", pass.toString());
+			jedis.hset(key, "pw", String.valueOf(pass));
 
 			jedis.zadd("all_users", 1, key);
 
+			System.out.println("Test: " + jedis.hget(key, "name") + jedis.hget(key, "pw"));
+			
 			User user = new User(username, pass);
 			return Optional.of(user);
 		} catch (Exception e) {
