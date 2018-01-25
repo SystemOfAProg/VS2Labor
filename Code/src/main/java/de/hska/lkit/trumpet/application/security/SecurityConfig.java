@@ -61,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		http.csrf().disable();
 
-		http.authorizeRequests().antMatchers("/profile/*").hasRole("USER").and().formLogin().defaultSuccessUrl("/global", true).and().logout().deleteCookies("remove").invalidateHttpSession(false)
+		http.authorizeRequests().antMatchers("/profile/*" /*,"/subscriptions"*/).hasRole("USER").and().formLogin().defaultSuccessUrl("/global", true).and().logout().deleteCookies("remove").invalidateHttpSession(false)
 			.logoutUrl("/custom-logout").logoutSuccessUrl("/global");
 		
 		

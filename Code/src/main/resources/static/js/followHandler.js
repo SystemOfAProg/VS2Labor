@@ -1,13 +1,38 @@
-function toggleFollowButton() {
-	if (userAlreadyFollowing()) {
+function toggleFollowButton(currentUser, userToFollow) {
+	if (userAlreadyFollowing(currentUser, userToFollow)) {
 		this.showUnfollow();
 	} else {
 		this.showFollow();
 	}
 }
 
-function userAlreadyFollowing() {
-	return true;
+function userAlreadyFollowing(currentUser, userToFollow) {
+	currentUser = currentUser.trim();
+	userToFollow = userToFollow.trim();
+	var requestURL = "http://localhost:8080/isFollowing";
+	var requestBody = JSON.stringify({ "currentUser": currentUser, "userToFollow": userToFollow });
+	$.ajax({
+        type: 'POST',
+        url: requestURL,
+        contentType: 'application/json',
+        data: requestBody,
+	    dataType: 'json',
+        success: function (body) {
+        	handleButton(body);
+        },
+        error: function(body) {
+        	// Lands in here even with status-code 200 !
+        	handleButton(body);
+	    }
+    });
+}
+
+function handleButton(body) {
+	if(body) {
+		showUnfollow();
+	} else {
+		showFollow();
+	}
 }
 
 function showFollow() {
@@ -26,6 +51,8 @@ function hideFollowUnfollow() {
 }
 
 function follow(currentUser, userToFollow) {
+	currentUser = currentUser.trim();
+	userToFollow = userToFollow.trim();
 	var requestURL = "http://localhost:8080/follow";
 	var requestBody = JSON.stringify({ "currentUser": currentUser, "userToFollow": userToFollow });
 	$.ajax({

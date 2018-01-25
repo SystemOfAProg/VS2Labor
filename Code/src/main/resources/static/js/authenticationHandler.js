@@ -12,8 +12,6 @@ function login(username, password) {
 //			handleLogin();
 //		})
 		
-		
-		
 		$.ajax({
 	        type: 'POST',
 	        url: requestURL,

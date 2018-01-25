@@ -141,6 +141,47 @@ public class FunctionsController {
 		String message = "The user " + currentUser + " successfully follows " + userToFollow + ".";
 		return new ResponseEntity<String>(message, HttpStatus.OK);
 	}
+	
+	/**
+	 * Is an user already follwing an other.
+	 * 
+	 * @return 200 when OK, 409 when post could not be added
+	 */
+	@RequestMapping(value = "/isFollowing", method = RequestMethod.POST)
+	public Object isFollowing(@RequestBody FollowRequestBody body) {
+		String followingUserName = body.currentUser.trim();
+		String userToFollowName = body.userToFollow.trim();
+		boolean userAlreadyFollowing = false;
+		log("Is User '" + userToFollowName + "' already following '" + followingUserName + "'.");
+		ServiceBundle service = new ServiceBundle();
+		try {
+			User followingUser = null;
+			User userToFollow;
+			Optional<User> followingUserOpt = service.getUserByUsername(followingUserName);
+			Optional<User> userToFollowOpt = service.getUserByUsername(userToFollowName);
+			if(followingUserOpt.isPresent()){
+				followingUser = followingUserOpt.get();
+			}
+			if(userToFollowOpt.isPresent()){
+				userToFollow = userToFollowOpt.get();
+			}
+			Optional<List<User>> followingsOpt = service.getFollowersOfUsers(followingUser);
+			if (followingsOpt.isPresent() ) {
+				List<User> followings = followingsOpt.get();
+				for (User user:followings) {
+					if(user.getName().equals(userToFollowName)) {
+						userAlreadyFollowing = true;
+					}
+				}
+			} else {
+				throw new IllegalStateException();
+			}
+		} catch (Exception e) {
+			String message = "An Error happened while looking up if user " + userToFollowName + " already follows " + followingUserName + ".";
+			return new ResponseEntity<String>(message, HttpStatus.CONFLICT);
+		};
+		return new ResponseEntity<String>(String.valueOf(userAlreadyFollowing), HttpStatus.OK);
+	}
 
 	/**
 	 * Unfollow an User.
