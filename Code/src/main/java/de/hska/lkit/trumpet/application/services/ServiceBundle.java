@@ -1,14 +1,13 @@
 package de.hska.lkit.trumpet.application.services;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
 import de.hska.lkit.trumpet.application.JedisFactory;
-import de.hska.lkit.trumpet.application.model.*;
-import de.hska.lkit.trumpet.application.security.SecurityConfig;
+import de.hska.lkit.trumpet.application.model.Tweet;
+import de.hska.lkit.trumpet.application.model.User;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
