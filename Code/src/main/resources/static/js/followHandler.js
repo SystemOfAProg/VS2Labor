@@ -1,8 +1,15 @@
 function toggleFollowButton(currentUser, userToFollow) {
+	hidePost(currentUser, userToFollow);
 	if (userAlreadyFollowing(currentUser, userToFollow)) {
 		this.showUnfollow();
 	} else {
 		this.showFollow();
+	}
+}
+
+function hidePost(currentUser, userToFollow) {
+	if(currentUser.trim() !== userToFollow.trim()) {
+		$('.profilePagePostsWrapper').hide();
 	}
 }
 
